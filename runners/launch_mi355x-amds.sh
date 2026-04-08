@@ -181,6 +181,17 @@ else
 
     export VLLM_CACHE_ROOT="/it-share/gharunners/.cache/vllm"
 
+    # qwen3.5_fp4_mi355x.sh clears cache inside the container; also remove on the host mount
+    # here so Actions always see an empty Hub repo before enroot/docker bind-mounts it.
+    BENCHMARK_SCRIPT="benchmarks/single_node/${EXP_NAME%%_*}_${PRECISION}_mi355x${FRAMEWORK_SUFFIX}${SPEC_SUFFIX}.sh"
+    if [[ "$(basename "$BENCHMARK_SCRIPT")" == "qwen3.5_fp4_mi355x.sh" ]] \
+        && [[ "${MODEL:-}" != /* && "${MODEL:-}" != ./* ]]; then
+        _hf_host_rm="${HF_HUB_CACHE_MOUNT%/}/models--${MODEL//\//--}"
+        echo "[launch_mi355x-amds] Pre-clearing Hub cache on host for ${MODEL}: ${_hf_host_rm}"
+        sudo rm -rf "$_hf_host_rm"
+        unset _hf_host_rm
+    fi
+
     srun --jobid=$JOB_ID \
         --container-image=$SQUASH_FILE \
         --container-mounts=$GITHUB_WORKSPACE:/workspace/,$HF_HUB_CACHE_MOUNT:$HF_HUB_CACHE \
