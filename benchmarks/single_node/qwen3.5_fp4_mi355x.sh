@@ -15,6 +15,7 @@ if [[ -n "$SLURM_JOB_ID" ]]; then
   echo "JOB $SLURM_JOB_ID running on $SLURMD_NODENAME"
 fi
 
+rm -rf /mnt/hf_hub_cache/models--amd--Qwen3.5-397B-A17B-MXFP4  # try to clear local cache
 hf download "$MODEL"
 
 export SGLANG_USE_AITER=1
