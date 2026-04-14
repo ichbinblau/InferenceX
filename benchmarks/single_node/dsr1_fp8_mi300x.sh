@@ -52,6 +52,7 @@ python3 -m sglang.launch_server \
 --cuda-graph-max-bs=128 \
 --chunked-prefill-size=131072 \
 --num-continuous-decode-steps=4 \
+--scheduler-recv-interval=30 \
 --max-prefill-tokens=131072 \
 --kv-cache-dtype fp8_e4m3 \
 --attention-backend aiter \
