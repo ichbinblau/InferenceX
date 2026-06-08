@@ -1,0 +1,220 @@
+Unable to find image 'ghcr.io/simondanielsson/vllm-dev:ainic-test-hydra' locally
+Unable to find image 'ghcr.io/simondanielsson/vllm-dev:ainic-test-hydra' locally
+ainic-test-hydra: Pulling from simondanielsson/vllm-dev
+ainic-test-hydra: Pulling from simondanielsson/vllm-dev
+de47083ed7d7: Already exists
+3a450e1fc160: Pulling fs layer
+5cd54945612b: Pulling fs layer
+7ddd5351f096: Pulling fs layer
+516345b092c0: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+315195426942: Pulling fs layer
+8e8ea224f73c: Pulling fs layer
+f7341c965a41: Pulling fs layer
+315195426942: Waiting
+8e8ea224f73c: Waiting
+4f4fb700ef54: Waiting
+5f8d110e0cd8: Pulling fs layer
+f7341c965a41: Waiting
+d058cdbc92c1: Pulling fs layer
+e406956136e7: Pulling fs layer
+1c155490c82c: Pulling fs layer
+516345b092c0: Waiting
+d058cdbc92c1: Waiting
+b9598f6bb4cd: Pulling fs layer
+9c205fa4c91b: Pulling fs layer
+e406956136e7: Waiting
+5f8d110e0cd8: Waiting
+1c155490c82c: Waiting
+b9598f6bb4cd: Waiting
+af73e7eff6e3: Pulling fs layer
+9c205fa4c91b: Waiting
+6a673c76d08c: Pulling fs layer
+af73e7eff6e3: Waiting
+74d1525de2a8: Pulling fs layer
+4633879f34bb: Pulling fs layer
+6a673c76d08c: Waiting
+74d1525de2a8: Waiting
+4633879f34bb: Waiting
+e3102d5e253e: Pulling fs layer
+465ac0fb6d35: Pulling fs layer
+e3102d5e253e: Waiting
+fd714dd32caa: Pulling fs layer
+de62c4d5e472: Pulling fs layer
+465ac0fb6d35: Waiting
+8621d0e9d7b3: Pulling fs layer
+fd714dd32caa: Waiting
+205ad9f7be34: Pulling fs layer
+ed7764701ded: Pulling fs layer
+49e15acf5a8a: Pulling fs layer
+8621d0e9d7b3: Waiting
+de62c4d5e472: Waiting
+205ad9f7be34: Waiting
+ed7764701ded: Waiting
+49e15acf5a8a: Waiting
+de47083ed7d7: Already exists
+3a450e1fc160: Already exists
+5cd54945612b: Already exists
+7ddd5351f096: Already exists
+516345b092c0: Already exists
+4f4fb700ef54: Already exists
+315195426942: Already exists
+8e8ea224f73c: Already exists
+f7341c965a41: Already exists
+4f4fb700ef54: Already exists
+4f4fb700ef54: Already exists
+5f8d110e0cd8: Already exists
+d058cdbc92c1: Already exists
+e406956136e7: Already exists
+1c155490c82c: Already exists
+b9598f6bb4cd: Already exists
+9c205fa4c91b: Pulling fs layer
+af73e7eff6e3: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+6a673c76d08c: Pulling fs layer
+74d1525de2a8: Pulling fs layer
+4633879f34bb: Pulling fs layer
+6a673c76d08c: Waiting
+e3102d5e253e: Pulling fs layer
+465ac0fb6d35: Pulling fs layer
+74d1525de2a8: Waiting
+4633879f34bb: Waiting
+fd714dd32caa: Pulling fs layer
+de62c4d5e472: Pulling fs layer
+8621d0e9d7b3: Pulling fs layer
+205ad9f7be34: Pulling fs layer
+ed7764701ded: Pulling fs layer
+49e15acf5a8a: Pulling fs layer
+de62c4d5e472: Waiting
+fd714dd32caa: Waiting
+8621d0e9d7b3: Waiting
+465ac0fb6d35: Waiting
+49e15acf5a8a: Waiting
+205ad9f7be34: Waiting
+e3102d5e253e: Waiting
+ed7764701ded: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+3a450e1fc160: Verifying Checksum
+3a450e1fc160: Pull complete
+7ddd5351f096: Verifying Checksum
+7ddd5351f096: Download complete
+af73e7eff6e3: Verifying Checksum
+af73e7eff6e3: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+516345b092c0: Verifying Checksum
+516345b092c0: Download complete
+6a673c76d08c: Verifying Checksum
+6a673c76d08c: Download complete
+74d1525de2a8: Verifying Checksum
+74d1525de2a8: Download complete
+4633879f34bb: Verifying Checksum
+4633879f34bb: Download complete
+e3102d5e253e: Verifying Checksum
+e3102d5e253e: Download complete
+8e8ea224f73c: Verifying Checksum
+8e8ea224f73c: Download complete
+9c205fa4c91b: Verifying Checksum
+9c205fa4c91b: Download complete
+f7341c965a41: Verifying Checksum
+f7341c965a41: Download complete
+de62c4d5e472: Verifying Checksum
+de62c4d5e472: Download complete
+fd714dd32caa: Verifying Checksum
+fd714dd32caa: Download complete
+8621d0e9d7b3: Verifying Checksum
+8621d0e9d7b3: Download complete
+205ad9f7be34: Verifying Checksum
+205ad9f7be34: Download complete
+ed7764701ded: Verifying Checksum
+ed7764701ded: Download complete
+49e15acf5a8a: Verifying Checksum
+49e15acf5a8a: Download complete
+315195426942: Verifying Checksum
+315195426942: Download complete
+d058cdbc92c1: Verifying Checksum
+d058cdbc92c1: Download complete
+e406956136e7: Verifying Checksum
+e406956136e7: Download complete
+9c205fa4c91b: Pull complete
+af73e7eff6e3: Pull complete
+4f4fb700ef54: Pull complete
+6a673c76d08c: Pull complete
+74d1525de2a8: Pull complete
+4633879f34bb: Pull complete
+e3102d5e253e: Pull complete
+465ac0fb6d35: Verifying Checksum
+465ac0fb6d35: Download complete
+1c155490c82c: Verifying Checksum
+1c155490c82c: Download complete
+b9598f6bb4cd: Download complete
+9c205fa4c91b: Verifying Checksum
+9c205fa4c91b: Download complete
+af73e7eff6e3: Verifying Checksum
+af73e7eff6e3: Download complete
+6a673c76d08c: Verifying Checksum
+6a673c76d08c: Download complete
+74d1525de2a8: Verifying Checksum
+74d1525de2a8: Download complete
+4633879f34bb: Verifying Checksum
+4633879f34bb: Download complete
+e3102d5e253e: Verifying Checksum
+e3102d5e253e: Download complete
+5f8d110e0cd8: Verifying Checksum
+5f8d110e0cd8: Download complete
+fd714dd32caa: Verifying Checksum
+fd714dd32caa: Download complete
+de62c4d5e472: Verifying Checksum
+de62c4d5e472: Download complete
+8621d0e9d7b3: Download complete
+465ac0fb6d35: Pull complete
+205ad9f7be34: Verifying Checksum
+205ad9f7be34: Download complete
+ed7764701ded: Verifying Checksum
+ed7764701ded: Download complete
+49e15acf5a8a: Download complete
+fd714dd32caa: Pull complete
+de62c4d5e472: Pull complete
+8621d0e9d7b3: Pull complete
+205ad9f7be34: Pull complete
+ed7764701ded: Pull complete
+49e15acf5a8a: Pull complete
+Digest: sha256:4e2def688264ddb2844597cc61ad20b44c5071320396c2405636754dce282692
+Status: Downloaded newer image for ghcr.io/simondanielsson/vllm-dev:ainic-test-hydra
+465ac0fb6d35: Verifying Checksum
+465ac0fb6d35: Download complete
+5cd54945612b: Verifying Checksum
+5cd54945612b: Download complete
+5cd54945612b: Pull complete
+7ddd5351f096: Pull complete
+516345b092c0: Pull complete
+4f4fb700ef54: Pull complete
+315195426942: Pull complete
+8e8ea224f73c: Pull complete
+f7341c965a41: Pull complete
+5f8d110e0cd8: Pull complete
+d058cdbc92c1: Pull complete
+e406956136e7: Pull complete
+1c155490c82c: Pull complete
+b9598f6bb4cd: Pull complete
+9c205fa4c91b: Pull complete
+af73e7eff6e3: Pull complete
+6a673c76d08c: Pull complete
+74d1525de2a8: Pull complete
+4633879f34bb: Pull complete
+e3102d5e253e: Pull complete
+465ac0fb6d35: Pull complete
+fd714dd32caa: Pull complete
+de62c4d5e472: Pull complete
+8621d0e9d7b3: Pull complete
+205ad9f7be34: Pull complete
+ed7764701ded: Pull complete
+49e15acf5a8a: Pull complete
+Digest: sha256:4e2def688264ddb2844597cc61ad20b44c5071320396c2405636754dce282692
+Status: Downloaded newer image for ghcr.io/simondanielsson/vllm-dev:ainic-test-hydra
+srun: error: mia1-p01-g07: task 1: Exited with exit code 137
+srun: Terminating StepId=6219.4
+slurmstepd: error: *** STEP 6219.4 ON mia1-p01-g06 CANCELLED AT 2026-05-15T04:38:44 ***
+srun: error: mia1-p01-g06: task 0: Terminated
+srun: Force Terminated StepId=6219.4

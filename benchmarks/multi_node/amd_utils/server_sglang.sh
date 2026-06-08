@@ -52,6 +52,43 @@ source $SGLANG_WS_PATH/env.sh
 host_ip=$(ip route get 1.1.1.1 | awk '/src/ {print $7}')
 host_name=$(hostname)
 
+# Optional in-container Mooncake upgrade.  The shipped image may carry a Mooncake
+# older than 0.3.8.post1, whose fallback allocator produces host memory the HCA
+# cannot RDMA-register (ibv_reg_mr -> ENOMEM), wedging the HiCache store init on
+# protocol=rdma.  Upgrading pulls the RDMA-capable tensor allocator.  Gated by
+# MC_UPGRADE=1 so non-mooncake runs are unaffected.
+if [[ "${MC_UPGRADE:-0}" == "1" && "${OFFLOADING:-none}" == "hicache" && "${HICACHE_STORAGE_BACKEND:-}" == "mooncake" ]]; then
+    echo "[Mooncake] Upgrading mooncake-transfer-engine on ${host_name} ..."
+    pip install --upgrade mooncake-transfer-engine 2>&1 | tail -3 || \
+        echo "[Mooncake] WARNING: upgrade failed; continuing with installed version"
+fi
+
+# Workaround: with page_first_direct + a storage backend, SGLang asserts the host
+# KV pool must be strictly larger than the device pool, which kills startup when
+# the host pool is sized smaller.  Soften that hard assert into a warning so the
+# server starts (lower L2 hit rate is acceptable).  Gated by MC_PATCH_HOSTPOOL=1.
+if [[ "${MC_PATCH_HOSTPOOL:-0}" == "1" && "${OFFLOADING:-none}" == "hicache" ]]; then
+    echo "[Mooncake] Patching memory_pool_host.py host>device assert -> warning on ${host_name} ..."
+    python3 -c "
+import pathlib
+f = pathlib.Path('/sgl-workspace/sglang/python/sglang/srt/mem_cache/memory_pool_host.py')
+src = f.read_text()
+old = '''        assert (
+            self.size > device_pool.size
+        ), \"The host memory should be larger than the device memory with the current protocol\"'''
+new = '''        if self.size <= device_pool.size:
+            import logging as _lg
+            _lg.getLogger(__name__).warning(
+                \"Host KV pool (%d tokens) <= device pool (%d tokens). L2 hit rate may be low.\",
+                self.size, device_pool.size)'''
+if old in src:
+    f.write_text(src.replace(old, new))
+    print('Patched memory_pool_host.py: assert -> warning')
+else:
+    print('memory_pool_host.py: already patched or assert not found')
+" 2>/dev/null || true
+fi
+
 # MORI_RDMA_TC configuration (optional)
 # If set by runner, use it for RDMA traffic class configuration
 # If not set, RDMA operations will proceed without QoS/traffic class settings
@@ -183,7 +220,7 @@ else
     prefill_cuda_graph_bs=($(seq $PREFILL_CUDA_GRAPH_BS_NO_DP_START $PREFILL_CUDA_GRAPH_BS_NO_DP_END))
     prefill_max_running_requests=$PREFILL_MAX_RUNNING_REQUESTS_NO_DP
     prefill_chunked_prefill_size=$PREFILL_CHUNKED_PREFILL_SIZE_NO_DP
-    prefill_context_length=""
+    prefill_context_length="${PREFILL_CONTEXT_LENGTH:-}"
     prefill_max_total_tokens=""
     prefill_enable_two_batch_overlap="false"
 fi
@@ -363,6 +400,142 @@ if [[ -n "$MODEL_NAME" ]]; then
     echo "Using model-specific configuration for: $MODEL_NAME"
 fi
 
+# =============================================================================
+# Optional disaggregation transfer-backend override + decode radix cache
+#   DISAGG_TRANSFER_BACKEND : ""(keep base_flags, = mori) | nixl | mooncake
+#   DECODE_RADIX_CACHE      : 0 (default) | 1
+# In PD disaggregation SGLang forces chunk cache on the decode server UNLESS
+# --disaggregation-decode-enable-radix-cache is passed, and that flag REQUIRES a
+# nixl/mooncake transfer backend (mori does not support it).  These are
+# independent of HiCache/OFFLOADING.
+# =============================================================================
+DISAGG_TRANSFER_BACKEND="${DISAGG_TRANSFER_BACKEND:-}"
+if [[ -n "$DISAGG_TRANSFER_BACKEND" ]]; then
+    for _cfg in PREFILL_SERVER_CONFIG DECODE_SERVER_CONFIG; do
+        _val="${!_cfg}"
+        if [[ "$_val" == *"--disaggregation-transfer-backend"* ]]; then
+            _val=$(echo "$_val" | sed -E "s/--disaggregation-transfer-backend[[:space:]]+[A-Za-z0-9_]+/--disaggregation-transfer-backend ${DISAGG_TRANSFER_BACKEND}/g")
+        else
+            _val="$_val --disaggregation-transfer-backend ${DISAGG_TRANSFER_BACKEND}"
+        fi
+        printf -v "$_cfg" '%s' "$_val"
+    done
+    echo "[Disagg] transfer backend -> ${DISAGG_TRANSFER_BACKEND}"
+fi
+
+DECODE_RADIX_CACHE="${DECODE_RADIX_CACHE:-0}"
+if [[ "$DECODE_RADIX_CACHE" == "1" ]]; then
+    _tb="$DISAGG_TRANSFER_BACKEND"
+    [[ -z "$_tb" ]] && _tb="$(echo "$DECODE_SERVER_CONFIG" | sed -nE 's/.*--disaggregation-transfer-backend[[:space:]]+([A-Za-z0-9_]+).*/\1/p')"
+    if [[ "$_tb" == "nixl" || "$_tb" == "mooncake" ]]; then
+        if [[ "$DECODE_SERVER_CONFIG" != *"--disaggregation-decode-enable-radix-cache"* ]]; then
+            DECODE_SERVER_CONFIG="$DECODE_SERVER_CONFIG --disaggregation-decode-enable-radix-cache"
+        fi
+        echo "[Disagg] decode radix cache enabled (transfer backend=${_tb})"
+    else
+        echo "[Disagg] WARNING: DECODE_RADIX_CACHE=1 ignored; requires nixl/mooncake transfer backend (current=${_tb:-mori})"
+    fi
+fi
+
+# =============================================================================
+# Optional KV cache offloading (HiCache) — enabled when OFFLOADING=hicache
+# HiCache extends RadixAttention, so radix cache MUST stay on (drop
+# --disable-radix-cache). The --hicache-* flags are appended to BOTH the
+# prefill and decode server configs.
+# =============================================================================
+OFFLOADING="${OFFLOADING:-none}"
+if [[ "$OFFLOADING" == "hicache" ]]; then
+    HICACHE_TOTAL_CPU_DRAM_GB="${HICACHE_TOTAL_CPU_DRAM_GB:-2000}"
+    HICACHE_HOST_POOL_COUNT="${HICACHE_HOST_POOL_COUNT:-1}"
+    HICACHE_PAGE_SIZE="${HICACHE_PAGE_SIZE:-1}"
+
+    # Optional L3 storage tier behind the CPU-DRAM (L2) cache.
+    #   ""        -> CPU DRAM only (default)
+    #   "mooncake"-> Mooncake distributed KV store (needs a mooncake_master)
+    HICACHE_STORAGE_BACKEND="${HICACHE_STORAGE_BACKEND:-}"
+
+    # Layout / IO backend / write policy are backend-specific:
+    #   mooncake L3: page_first_direct + the "direct" IO backend (the Mooncake
+    #     store maps a page-contiguous segment for RDMA/zero-copy).  This layout
+    #     asserts host_pool > device_pool, so it needs a large CPU-DRAM budget.
+    #   L2-only (CPU DRAM): layer_first + the "kernel" IO backend.  layer_first
+    #     has no host>device constraint (the "direct" IO backend REQUIRES a
+    #     page_first layout, so it cannot be paired with layer_first).
+    if [[ "$HICACHE_STORAGE_BACKEND" == "mooncake" ]]; then
+        HICACHE_MEM_LAYOUT="${HICACHE_MEM_LAYOUT:-page_first_direct}"
+        HICACHE_IO_BACKEND="${HICACHE_IO_BACKEND:-direct}"
+        HICACHE_WRITE_POLICY="${HICACHE_WRITE_POLICY:-write_through}"
+    else
+        HICACHE_MEM_LAYOUT="${HICACHE_MEM_LAYOUT:-layer_first}"
+        HICACHE_IO_BACKEND="${HICACHE_IO_BACKEND:-kernel}"
+        HICACHE_WRITE_POLICY="${HICACHE_WRITE_POLICY:-write_through_selective}"
+    fi
+
+    # Mooncake master/connection settings (used only when storage=mooncake).
+    # The master runs once on node 0; every prefill/decode server connects to
+    # it via NODE0_ADDR so it is reachable across nodes.
+    MC_MASTER_PORT="${MC_MASTER_PORT:-50061}"
+    MC_METRICS_PORT="${MC_METRICS_PORT:-9003}"
+    MC_PROTOCOL="${MC_PROTOCOL:-rdma}"
+    MC_GLOBAL_SEG="${MC_GLOBAL_SEG:-4gb}"
+    MC_DEVICE="${MC_DEVICE:-$IBDEVICES}"
+    MC_MASTER_ADDR="${MC_MASTER_ADDR:-${NODE0_ADDR}:${MC_MASTER_PORT}}"
+
+    # Emit the --hicache-storage-backend flags (empty unless mooncake).  The
+    # extra-config JSON is single-quoted so it survives the later `eval` of the
+    # launch command as a single argument.
+    build_storage_flags() {
+        [[ "$HICACHE_STORAGE_BACKEND" != "mooncake" ]] && return 0
+        local extra="{\"master_server_address\": \"${MC_MASTER_ADDR}\", \"protocol\": \"${MC_PROTOCOL}\", \"device_name\": \"${MC_DEVICE}\", \"local_hostname\": \"${host_ip}\", \"global_segment_size\": \"${MC_GLOBAL_SEG}\", \"metadata_server\": \"P2PHANDSHAKE\", \"check_server\": false}"
+        echo "--hicache-storage-backend mooncake --hicache-storage-backend-extra-config '${extra}' --enable-metrics --enable-cache-report"
+    }
+
+    # --hicache-size is per rank per host pool; derive from the node-total DRAM
+    # budget divided by TP and the host-pool count unless set explicitly.
+    build_hicache_flags() {
+        local tp="$1"
+        local size="${HICACHE_SIZE_GB:-$((HICACHE_TOTAL_CPU_DRAM_GB / tp / HICACHE_HOST_POOL_COUNT))}"
+        [ "$size" -lt 1 ] && size=1
+        echo "--page-size ${HICACHE_PAGE_SIZE} --enable-hierarchical-cache --hicache-size ${size} --hicache-io-backend ${HICACHE_IO_BACKEND} --hicache-mem-layout ${HICACHE_MEM_LAYOUT} --hicache-write-policy ${HICACHE_WRITE_POLICY} $(build_storage_flags)"
+    }
+
+    # HiCache requires RadixAttention; strip any --disable-radix-cache.
+    PREFILL_SERVER_CONFIG="${PREFILL_SERVER_CONFIG//--disable-radix-cache/}"
+    DECODE_SERVER_CONFIG="${DECODE_SERVER_CONFIG//--disable-radix-cache/}"
+
+    # Prefill always gets HiCache.
+    PREFILL_SERVER_CONFIG="$PREFILL_SERVER_CONFIG $(build_hicache_flags "$PREFILL_TP_SIZE")"
+
+    # Decode is trickier: in disaggregation mode SGLang forces chunk cache
+    # (disable_radix_cache=True) for the decode server UNLESS
+    # --disaggregation-decode-enable-radix-cache is passed, and that flag in turn
+    # REQUIRES a nixl/mooncake disaggregation transfer backend.  With the default
+    # mori transfer backend, enabling HiCache on decode triggers a fatal
+    # "enable-hierarchical-cache and disable-radix-cache are mutually exclusive"
+    # error.  So HiCache is prefill-only by default (matching the reference 2P1D
+    # mooncake recipe).  Set HICACHE_DECODE=1 only when the transfer backend is
+    # nixl/mooncake to also cache on decode.
+    HICACHE_DECODE="${HICACHE_DECODE:-0}"
+    if [[ "$HICACHE_DECODE" == "1" ]]; then
+        DECODE_SERVER_CONFIG="$DECODE_SERVER_CONFIG --disaggregation-decode-enable-radix-cache $(build_hicache_flags "$DECODE_TP_SIZE")"
+        echo "[HiCache] OFFLOADING=hicache applied to prefill + decode (decode radix cache enabled; needs nixl/mooncake transfer backend)"
+    else
+        # HiCache forces the prefill KV pool to --page-size ${HICACHE_PAGE_SIZE},
+        # but disaggregation requires the prefill and decode page sizes to match
+        # (else a runtime "Page size mismatch" abort on the first transfer).  The
+        # decode default is 1, so mirror the page size onto decode even though it
+        # does not run HiCache itself.
+        DECODE_SERVER_CONFIG="$DECODE_SERVER_CONFIG --page-size ${HICACHE_PAGE_SIZE}"
+        echo "[HiCache] OFFLOADING=hicache applied to prefill only; decode mirrors --page-size ${HICACHE_PAGE_SIZE} for transfer compatibility (chunk cache under the mori transfer backend)"
+    fi
+    echo "[HiCache] params: io_backend=${HICACHE_IO_BACKEND}, mem_layout=${HICACHE_MEM_LAYOUT}, page_size=${HICACHE_PAGE_SIZE}, write_policy=${HICACHE_WRITE_POLICY}, storage_backend=${HICACHE_STORAGE_BACKEND:-none}"
+    if [[ "$HICACHE_STORAGE_BACKEND" == "mooncake" ]]; then
+        echo "[HiCache] Mooncake store: master=${MC_MASTER_ADDR} protocol=${MC_PROTOCOL} device=${MC_DEVICE} segment=${MC_GLOBAL_SEG}"
+    fi
+else
+    echo "[HiCache] OFFLOADING=${OFFLOADING} (HiCache disabled)"
+fi
+
 if [[ "${EVAL_ONLY:-false}" == "true" ]] || [[ "${RUN_EVAL:-false}" == "true" ]]; then
     PREFILL_SERVER_CONFIG=$(echo "$PREFILL_SERVER_CONFIG" | sed 's/--ep-dispatch-algorithm fake//g')
     DECODE_SERVER_CONFIG=$(echo "$DECODE_SERVER_CONFIG" | sed 's/--ep-dispatch-algorithm fake//g')
@@ -410,6 +583,38 @@ if [ "$NODE_RANK" -eq 0 ]; then
     echo "Decode  env: SGLANG_MORI_MOE_MAX_INPUT_TOKENS=${MORI_MOE_MAX_INPUT_TOKENS_DECODE} "
 
     echo "================================================"
+
+    # Start the Mooncake store master (L3 HiCache backend) on node 0 only.
+    # All prefill/decode servers connect to it via NODE0_ADDR:MC_MASTER_PORT.
+    if [[ "${OFFLOADING:-none}" == "hicache" && "${HICACHE_STORAGE_BACKEND:-}" == "mooncake" ]]; then
+        echo "Starting Mooncake master on ${host_ip}:${MC_MASTER_PORT} (metrics :${MC_METRICS_PORT})"
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+            echo "DRY RUN: mooncake_master -port ${MC_MASTER_PORT} -metrics_port ${MC_METRICS_PORT}"
+        else
+            MC_MASTER_LOG="/run_logs/slurm_job-${SLURM_JOB_ID}/mooncake_master_${host_name}.log"
+            mooncake_master -port "${MC_MASTER_PORT}" -metrics_port "${MC_METRICS_PORT}" \
+                > "${MC_MASTER_LOG}" 2>&1 &
+            mc_master_pid=$!
+            sleep 3
+            # Fail loudly on a port collision. On shared nodes the Mooncake RPC
+            # port may already be taken by another user's master; in that case the
+            # metrics-port health check below can still pass against the foreign
+            # master while our RPC port is dead, and the prefill then hangs.
+            if grep -qiE "Address already in use|bind .*error" "${MC_MASTER_LOG}" 2>/dev/null; then
+                echo "ERROR: mooncake_master failed to bind port ${MC_MASTER_PORT} (already in use)."
+                echo "       Set MC_MASTER_PORT/MC_METRICS_PORT to free ports and resubmit."
+                grep -iE "Address already in use|bind .*error" "${MC_MASTER_LOG}" | tail -3
+                exit 1
+            fi
+            for ((i=3; i<=60; i+=3)); do
+                if curl -sf "http://127.0.0.1:${MC_METRICS_PORT}/get_all_segments" >/dev/null 2>&1; then
+                    echo "  mooncake master OK at ${i}s"
+                    break
+                fi
+                sleep 3
+            done
+        fi
+    fi
 
     # start the head prefill server
     PREFILL_MORI_MOE_ENV=""
@@ -459,12 +664,21 @@ if [ "$NODE_RANK" -eq 0 ]; then
     fi
     echo "Congratulations!!! All prefill and decode servers are up . . ."
 
+    # Router load-balancing policy. Defaults to "random" (prior behavior); set
+    # ROUTER_POLICY (and optionally PREFILL_ROUTER_POLICY/DECODE_ROUTER_POLICY to
+    # override per group) to e.g. cache_aware for prefix-cache-affinity routing
+    # across multiple decode workers. Valid: random, round_robin, cache_aware,
+    # power_of_two, bucket, manual, consistent_hashing, prefix_hash.
+    ROUTER_POLICY="${ROUTER_POLICY:-random}"
+    PREFILL_ROUTER_POLICY="${PREFILL_ROUTER_POLICY:-$ROUTER_POLICY}"
+    DECODE_ROUTER_POLICY="${DECODE_ROUTER_POLICY:-$ROUTER_POLICY}"
+    echo "[Router] policy=${ROUTER_POLICY} prefill-policy=${PREFILL_ROUTER_POLICY} decode-policy=${DECODE_ROUTER_POLICY}"
     ROUTER_CMD="python -m sglang_router.launch_router \
         --pd-disaggregation \
         --port 30000 \
-        --policy random \
-        --prefill-policy random \
-        --decode-policy random \
+        --policy ${ROUTER_POLICY} \
+        --prefill-policy ${PREFILL_ROUTER_POLICY} \
+        --decode-policy ${DECODE_ROUTER_POLICY} \
         ${PREFILL_ARGS} \
         ${DECODE_ARGS}"
 
@@ -632,6 +846,7 @@ if [ "$NODE_RANK" -eq 0 ]; then
     if [[ "$DRY_RUN" -eq 0 ]]; then
         kill $proxy_pid
         kill $prefill0_pid
+        [[ -n "${mc_master_pid:-}" ]] && kill "$mc_master_pid" 2>/dev/null || true
     fi
 
     if [[ "${EVAL_FAILED:-0}" -eq 1 ]]; then

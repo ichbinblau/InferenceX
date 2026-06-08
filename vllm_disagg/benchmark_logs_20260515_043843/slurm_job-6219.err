@@ -1,0 +1,5 @@
+srun: error: mia1-p01-g07: task 1: Exited with exit code 137
+srun: Terminating StepId=6219.9
+slurmstepd: error: *** STEP 6219.9 ON mia1-p01-g06 CANCELLED AT 2026-05-15T05:13:42 ***
+srun: error: mia1-p01-g06: task 0: Terminated
+srun: Force Terminated StepId=6219.9

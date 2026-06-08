@@ -1,0 +1,580 @@
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Installing ibv_devinfo + iproute2 in container...
+Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:7 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3915 kB]
+Get:8 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7004 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1295 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [61.6 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4286 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [86.0 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7341 kB]
+Get:16 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy InRelease [2321 B]
+Get:17 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy InRelease [3185 B]
+Get:18 https://repo.radeon.com/rocm/apt/7.2.2 jammy InRelease [2605 B]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1602 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:22 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy/main amd64 Packages [3369 B]
+Get:23 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy InRelease [2367 B]
+Get:24 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy/main amd64 Packages [1332 B]
+Get:25 https://repo.radeon.com/rocm/apt/7.2.2 jammy/main amd64 Packages [71.3 kB]
+Get:26 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:27 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy/main amd64 Packages [799 B]
+Get:28 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main amd64 Packages [38.9 kB]
+Fetched 46.2 MB in 1s (40.6 MB/s)
+Reading package lists...
+W: https://repo.radeon.com/amdgpu/30.30.1/ubuntu/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.radeon.com/rocm/apt/7.2.2/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libatm1 libbpf0 libmnl0 libxtables12
+Suggested packages:
+  iproute2-doc
+The following NEW packages will be installed:
+  ibverbs-utils iproute2 libatm1 libbpf0 libmnl0 libxtables12
+0 upgraded, 6 newly installed, 0 to remove and 7 not upgraded.
+Need to get 1337 kB of archives.
+After this operation, 3876 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libbpf0 amd64 1:0.5.0-1ubuntu22.04.1 [140 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmnl0 amd64 1.0.4-3build2 [13.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxtables12 amd64 1.8.7-1ubuntu5.2 [31.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 iproute2 amd64 5.15.0-1ubuntu2.1 [1072 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 libatm1 amd64 1:2.5.1-4build2 [22.8 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ibverbs-utils amd64 39.0-1 [57.3 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 1337 kB in 0s (23.8 MB/s)
+Selecting previously unselected package libbpf0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69270 files and directories currently installed.)
+Preparing to unpack .../0-libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../1-libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../2-libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Selecting previously unselected package iproute2.
+Preparing to unpack .../3-iproute2_5.15.0-1ubuntu2.1_amd64.deb ...
+Unpacking iproute2 (5.15.0-1ubuntu2.1) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../4-libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Selecting previously unselected package ibverbs-utils.
+Preparing to unpack .../5-ibverbs-utils_39.0-1_amd64.deb ...
+Unpacking ibverbs-utils (39.0-1) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up ibverbs-utils (39.0-1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+[SETUP] amd-quark already present
+[SETUP] Patched: layer.py
+INFO 05-15 09:53:46 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 09:53:57 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-15 09:54:01 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-15 09:54:05 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 09:54:05 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+[SETUP] Patched: idle KV block reaper for prefill
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: ibverbs-utils+iproute2 MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 54s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.182
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.182
+[PATCH] Added ucx_error_handling_mode=none to /usr/local/lib/python3.12/dist-packages/rixl/_api.py (IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5)
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g06
+Port 5000 is now open on 10.24.112.182.
+Port 5000 has been closed on 10.24.112.182.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+NODE INFO =======================================
+================================================
+Node List : mia1-p01-g06,mia1-p01-g07
+Node IPs  : 10.24.112.182,10.24.112.183
+Model     : Kimi-K2.5-MXFP4
+================================================
+CLUSTER INFO ====================================
+================================================
+mia1-p01-g06:10.24.112.182 is Proxy Node and Prefill Node
+Using prefill config: --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Prefill servers: 10.24.112.182 
+Decode  servers: 10.24.112.183 
+================================================
+Using external vllm-router container (started by job.slurm on this node)
+++ set +x
+Waiting for all prefill and decode servers to be up . . .
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --served-model-name Kimi-K2.5-MXFP4         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_producer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1800s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1795s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1790s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1785s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1780s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1775s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1770s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1765s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1760s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1755s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1750s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1745s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1740s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1735s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1730s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1725s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1720s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1715s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1710s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1705s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1700s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1695s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1690s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1685s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1680s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1675s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1670s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1665s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1660s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1655s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1650s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1645s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1640s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1635s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1630s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1625s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1620s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1615s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1610s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1605s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1600s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1595s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1590s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1585s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1580s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1575s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1570s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1565s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1560s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1555s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1550s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1545s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1540s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1535s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1530s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1525s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1520s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1515s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1510s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1505s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1500s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1495s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1490s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1485s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1480s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1475s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1470s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1465s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1460s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1455s remaining)
+Congratulations!!! All prefill and decode servers are up . . .
+Router is ready for benchmarking
+Ready for benchmarking on mia1-p01-g06:10.24.112.182
+Benchmarking on mia1-p01-g06:10.24.112.182
+++ eval 'bash /workspace/benchmarks/multi_node/amd_utils/bench.sh 1 1 8 8         /models Kimi-K2.5-MXFP4 /run_logs/slurm_job-6228 1024         1024 "8" inf         0.8 10'
++++ bash /workspace/benchmarks/multi_node/amd_utils/bench.sh 1 1 8 8 /models Kimi-K2.5-MXFP4 /run_logs/slurm_job-6228 1024 1024 8 inf 0.8 10
+Config 1024; 1024; 8; inf
+profile_folder: /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024
+max_concurrency: 8
+chosen_req_rate: inf
+MODEL_PATH: /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+ROUTER_PORT: 30000
+chosen_isl: 1024
+chosen_osl: 1024
+num_prompts: 80
+export_file: /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8
++ [[ -n '' ]]
++ python3 /workspace/utils/bench_serving/benchmark_serving.py --model Kimi-K2.5-MXFP4 --backend openai --base-url http://0.0.0.0:30000 --dataset-name random --random-input-len 1024 --random-output-len 1024 --random-range-ratio 0.8 --num-prompts 80 --max-concurrency 8 --request-rate inf --ignore-eos --save-result --num-warmups 16 --percentile-metrics ttft,tpot,itl,e2el --result-dir /workspace/ --result-filename /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8.json --trust-remote-code --tokenizer /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+/workspace/utils/bench_serving/benchmark_serving.py:49: DeprecationWarning: `vllm.transformers_utils.tokenizer.get_tokenizer` has been moved to `vllm.tokenizers.get_tokenizer`. The old name will be removed in a future version.
+  from vllm.transformers_utils.tokenizer import get_tokenizer
+Namespace(backend='openai', base_url='http://0.0.0.0:30000', host='127.0.0.1', port=8000, endpoint='/v1/completions', dataset_name='random', dataset_path=None, max_concurrency=8, model='Kimi-K2.5-MXFP4', tokenizer='/models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc', best_of=1, use_beam_search=False, num_prompts=80, logprobs=None, request_rate=inf, burstiness=1.0, seed=0, trust_remote_code=True, disable_tqdm=False, profile=False, save_result=True, save_detailed=False, metadata=None, result_dir='/workspace/', result_filename='/run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8.json', ignore_eos=True, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='90,99,99.9', goodput=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=1024, random_range_ratio=0.8, random_prefix_len=0, use_chat_template=False, random_num_workers=0, dsv4=False, hf_subset=None, hf_split=None, hf_output_len=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None, num_warmups=16)
+WARNING 05-15 10:05:17 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Generating 80 prompts using 8 worker processes...
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+WARNING 05-15 10:05:18 [registry.py:247] Using a slow tokenizer. This might cause a significant slowdown. Consider using a fast tokenizer instead.
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Calling super().encode with {'add_special_tokens': False}
+Prompt generation completed in 1.0s
+-------------------  Input/Output Length Statistics  -------------------
+ input_lens : min=820   max=1022  mean=922.21   avg_token_mismatch=0.00  
+ output_lens: min=819   max=1024  mean=929.08  
+------------------------------------------------------------------------ 
+
+Starting initial single prompt test run...
+Warming up with 16 requests...
+  0%|          | 0/16 [00:00<?, ?it/s]  6%|▋         | 1/16 [00:25<06:20, 25.39s/it]100%|██████████| 16/16 [00:41<00:00,  2.58s/it]
+Warmup completed.
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 8
+  0%|          | 0/80 [00:00<?, ?it/s] 11%|█▏        | 9/80 [00:29<03:50,  3.24s/it] 29%|██▉       | 23/80 [00:48<03:04,  3.24s/it] 30%|███       | 24/80 [00:49<01:46,  1.90s/it] 40%|████      | 32/80 [01:08<01:31,  1.90s/it] 41%|████▏     | 33/80 [01:13<01:43,  2.20s/it] 51%|█████▏    | 41/80 [01:28<01:25,  2.20s/it] 57%|█████▊    | 46/80 [01:34<01:06,  1.95s/it] 68%|██████▊   | 54/80 [01:48<00:50,  1.95s/it] 71%|███████▏  | 57/80 [01:57<00:45,  1.99s/it] 80%|████████  | 64/80 [02:08<00:31,  1.99s/it] 88%|████████▊ | 70/80 [02:19<00:18,  1.87s/it]100%|██████████| 80/80 [02:35<00:00,  1.95s/it]
+Starting main benchmark run...
+============ Serving Benchmark Result ============
+Successful requests:                     80        
+Benchmark duration (s):                  155.67    
+Total input tokens:                      73777     
+Total generated tokens:                  74326     
+Request throughput (req/s):              0.51      
+Output token throughput (tok/s):         477.46    
+Total Token throughput (tok/s):          951.38    
+---------------Time to First Token----------------
+Mean TTFT (ms):                          180.71    
+Median TTFT (ms):                        160.62    
+P90 TTFT (ms):                           214.97    
+P99 TTFT (ms):                           373.57    
+P99.9 TTFT (ms):                         374.34    
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          16.17     
+Median TPOT (ms):                        16.10     
+P90 TPOT (ms):                           16.51     
+P99 TPOT (ms):                           16.64     
+P99.9 TPOT (ms):                         16.68     
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           16.17     
+Median ITL (ms):                         15.94     
+P90 ITL (ms):                            17.25     
+P99 ITL (ms):                            19.33     
+P99.9 ITL (ms):                          21.37     
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          15192.00  
+Median E2EL (ms):                        15203.54  
+P90 E2EL (ms):                           16386.13  
+P99 E2EL (ms):                           16967.72  
+P99.9 E2EL (ms):                         17000.83  
+==================================================
++ local benchmark_exit_code=0
++ set +x
+-----------------------------------------
+[BENCH] Cooldown: waiting 10s for idle KV block reaper...
+++ set +x

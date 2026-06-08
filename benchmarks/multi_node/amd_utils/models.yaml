@@ -322,7 +322,7 @@ DeepSeek-R1-0528-MXFP4-v2:
   dp_flags: "--moe-a2a-backend mori --deepep-mode normal --enable-dp-attention --moe-dense-tp-size 1 --enable-dp-lm-head --stream-interval 100 --tokenizer-worker-num 32 "
   prefill:
     mem_fraction_static: 0.8
-    disable_radix_cache: true
+    disable_radix_cache: false
     dp:
       max_running_requests: 4096
       chunked_prefill_size: "MORI_MAX_DISPATCH_TOKENS_PREFILL * PREFILL_TP_SIZE"

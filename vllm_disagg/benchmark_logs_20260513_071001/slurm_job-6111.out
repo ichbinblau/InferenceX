@@ -1,0 +1,181 @@
+=== Job Start Time ===
+UTC Time: 2026-05-13 07:10:01 UTC
+PST Time: 2026-05-13 00:10:01 PDT
+ENGINE: vllm-disagg
+=======================
+
+Model found: Kimi-K2.5-MXFP4
+Runfile set: server.sh
+Looking for model: Kimi-K2.5-MXFP4 (disk dir: models--amd--Kimi-K2.5-MXFP4)
+Found MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+Final MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+NUM_NODES: 2 (xP=1 + yD=1)
+
+Selected nodes: mia1-p01-g06,mia1-p01-g07
+Node IPs: 10.24.112.182 10.24.112.183
+MASTER_NODE: mia1-p01-g06
+NODE0_ADDR:  10.24.112.182
+NNODES:      2
+REPO DIR:    /it-share/thshan/InferenceX
+USER:        thshan@amd.com
+Refreshing NFS caches on all nodes...
+NFS cache refreshed on mia1-p01-g07
+NFS cache refreshed on mia1-p01-g06
+Rank 1 on mia1-p01-g07
+Rank 0 on mia1-p01-g06
+e314b9a1df88
+db9a547fea9d
+bba29b974aab
+4de00a3e4aeb
+a2f207c2eeb1
+ea420119c692
+a58d3f2e9ae3
+60b38eeac094
+8aadf8dde36859b83fcc6086f783aec26650375717947a5721d2e23fc826f940
+792c29c33f14
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Container RDMA/net tools already present
+[SETUP] amd-quark already present
+afcdfa042cb9
+94ba15458ae5
+21986a0b874a
+e5085239ed6d
+fe6436b98e9d
+9431644327c4
+4214247b91ff
+fe99f4be1608
+d62e7d0daf17
+5f50ba99c325
+889743b396a4
+38681a389b9c
+2da9a3d0dddb
+6b791cabe0f9
+612b66aafd4b
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Container RDMA/net tools already present
+[SETUP] amd-quark already present
+INFO 05-13 07:10:13 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:13 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:13 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: layer.py
+INFO 05-13 07:10:18 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 07:10:23 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:23 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:23 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: layer.py
+INFO 05-13 07:10:28 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 07:10:30 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-13 07:10:34 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-13 07:10:38 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 07:10:38 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+INFO 05-13 07:10:40 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-13 07:10:43 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:43 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:43 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+INFO 05-13 07:10:44 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-13 07:10:48 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 07:10:48 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+INFO 05-13 07:10:49 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:49 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:49 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: idle KV block reaper for prefill
+INFO 05-13 07:10:53 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:53 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:53 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+INFO 05-13 07:10:54 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:54 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:54 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 54s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
+/workspace/benchmarks/multi_node/amd_utils/env.sh: line 59: syntax error near unexpected token `<<<'
+/workspace/benchmarks/multi_node/amd_utils/env.sh: line 59: `<<<<<<< Updated upstream'
+[INFO] Management IP (barriers/proxy): 10.24.112.182
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.182
+Error: UCX_NET_DEVICES is empty after env.sh detection
+INFO 05-13 07:10:58 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:10:58 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:10:58 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: idle KV block reaper for prefill
+INFO 05-13 07:11:04 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 07:11:04 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 07:11:04 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 54s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ grep '^default'
+++++ ip route
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
+/workspace/benchmarks/multi_node/amd_utils/env.sh: line 59: syntax error near unexpected token `<<<'
+/workspace/benchmarks/multi_node/amd_utils/env.sh: line 59: `<<<<<<< Updated upstream'
+[INFO] Management IP (barriers/proxy): 10.24.112.183
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.183
+Error: UCX_NET_DEVICES is empty after env.sh detection
+container_vllm-disagg_thshan_amd.com__Kimi-K2.5-MXFP4_6111
+container_vllm-disagg_thshan_amd.com__Kimi-K2.5-MXFP4_6111
+router_vllm_thshan_amd.com__6111

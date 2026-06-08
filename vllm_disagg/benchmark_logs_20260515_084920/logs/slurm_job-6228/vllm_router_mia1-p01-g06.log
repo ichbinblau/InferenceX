@@ -1,0 +1,53 @@
+DEBUG: Main function started
+DEBUG: Parsing prefill arguments
+DEBUG: Prefill URLs parsed: []
+DEBUG: Filtering CLI arguments
+DEBUG: Raw args: ["vllm-router", "--vllm-pd-disaggregation", "--kv-connector", "moriio", "--vllm-discovery-address", "0.0.0.0:36367", "--port", "30000", "--host", "0.0.0.0", "--policy", "consistent_hash", "--prefill-policy", "consistent_hash", "--decode-policy", "consistent_hash", "--log-level", "info"]
+DEBUG: Parsing CLI arguments with clap
+DEBUG: Filtered args: ["vllm-router", "--vllm-pd-disaggregation", "--kv-connector", "moriio", "--vllm-discovery-address", "0.0.0.0:36367", "--port", "30000", "--host", "0.0.0.0", "--policy", "consistent_hash", "--prefill-policy", "consistent_hash", "--decode-policy", "consistent_hash", "--log-level", "info"]
+DEBUG: CLI args parsed successfully
+DEBUG: vllm_pd_disaggregation: true
+VLLM Router starting...
+Host: 0.0.0.0:30000
+Mode: vLLM PD Disaggregated
+Policy: consistent_hash
+DEBUG: Converting to RouterConfig
+ℹ️  INFO: Using vLLM ZMQ service discovery mode.
+   Discovery address: Some("0.0.0.0:36367")
+DEBUG: RouterConfig created successfully
+DEBUG: Validating configuration
+DEBUG: Configuration validated successfully
+DEBUG: Creating ServerConfig
+DEBUG: CLI host: 0.0.0.0, port: 30000
+DEBUG: ServerConfig created successfully - host: 0.0.0.0, port: 30000
+DEBUG: Creating Tokio runtime
+DEBUG: Tokio runtime created successfully
+DEBUG: Starting server startup function
+DEBUG: Server startup function called
+DEBUG: Initializing logging
+DEBUG: Logging initialized
+DEBUG: Initializing Prometheus metrics
+DEBUG: Prometheus metrics initialized
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m831:[0m Starting router on 0.0.0.0:30000 | mode: VllmPrefillDecode { prefill_urls: [], decode_urls: [], prefill_policy: Some(ConsistentHash { virtual_nodes: 160 }), decode_policy: Some(ConsistentHash { virtual_nodes: 160 }), discovery_address: Some("0.0.0.0:36367") } | policy: ConsistentHash { virtual_nodes: 160 } | kv_connector: MoriIO | max_payload: 512MB
+DEBUG: Creating HTTP client
+DEBUG: HTTP client created
+DEBUG: Creating AppContext
+DEBUG: AppContext created
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m929:[0m Single router mode (enable_igw=false)
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::factory[0m[2m:[0m [2msrc/routers/factory.rs[0m[2m:[0m[2m29:[0m Creating VllmPDRouter with prefill_urls: [], decode_urls: [], discovery: Some("0.0.0.0:36367")
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::factory[0m[2m:[0m [2msrc/routers/factory.rs[0m[2m:[0m[2m81:[0m Creating VllmPDRouter with service discovery at: Some("0.0.0.0:36367")
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_pd_router[0m[2m:[0m [2msrc/routers/http/vllm_pd_router.rs[0m[2m:[0m[2m1541:[0m VllmPDRouter::new called in discovery mode with address: 0.0.0.0:36367
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::pd_router[0m[2m:[0m [2msrc/routers/http/pd_router.rs[0m[2m:[0m[2m574:[0m DP-aware mode disabled, using original worker URLs
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_pd_router[0m[2m:[0m [2msrc/routers/http/vllm_pd_router.rs[0m[2m:[0m[2m1552:[0m Starting vLLM service discovery on 0.0.0.0:36367
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_service_discovery[0m[2m:[0m [2msrc/routers/http/vllm_service_discovery.rs[0m[2m:[0m[2m160:[0m Starting vLLM service discovery listener on 0.0.0.0:36367
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_pd_router[0m[2m:[0m [2msrc/routers/http/vllm_pd_router.rs[0m[2m:[0m[2m1558:[0m VllmPDRouter created successfully with pure service discovery, kv_connector=MoriIO
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::factory[0m[2m:[0m [2msrc/routers/factory.rs[0m[2m:[0m[2m101:[0m VllmPDRouter instance created successfully
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m941:[0m Started health checker for workers with 60s interval
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m956:[0m Started request queue with size: 100, timeout: 60s
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m992:[0m Router ready | workers: []
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::middleware[0m[2m:[0m [2msrc/middleware.rs[0m[2m:[0m[2m421:[0m Starting concurrency queue processor
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::server[0m[2m:[0m [2msrc/server.rs[0m[2m:[0m[2m1021:[0m Starting server on 0.0.0.0:30000
+[2m2026-05-15 08:49:21[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_service_discovery[0m[2m:[0m [2msrc/routers/http/vllm_service_discovery.rs[0m[2m:[0m[2m183:[0m ZMQ service discovery bound to tcp://0.0.0.0:36367
+[2m2026-05-15 09:13:07[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_service_discovery[0m[2m:[0m [2msrc/routers/http/vllm_service_discovery.rs[0m[2m:[0m[2m267:[0m MoRI-IO transfer mode set to Read
+[2m2026-05-15 09:13:07[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_service_discovery[0m[2m:[0m [2msrc/routers/http/vllm_service_discovery.rs[0m[2m:[0m[2m281:[0m 🔵Add Prefill [HTTP:10.24.112.182:2584, ZMQ:host:10.24.112.182,handshake:6301,notify:61005]
+[2m2026-05-15 09:14:37[0m [32m INFO[0m [2mvllm_router_rs::routers::http::vllm_service_discovery[0m[2m:[0m [2msrc/routers/http/vllm_service_discovery.rs[0m[2m:[0m[2m298:[0m 🔵Add Decode [HTTP:10.24.112.183:2584, ZMQ:host:10.24.112.183,handshake:6301,notify:61005]

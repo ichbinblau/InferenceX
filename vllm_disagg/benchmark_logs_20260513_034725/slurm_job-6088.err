@@ -1,0 +1,42 @@
+Unable to find image 'aigmkt/vllm-dev:ainic3' locally
+ainic3: Pulling from aigmkt/vllm-dev
+ad1a9d392ffd: Already exists
+41b585b74eb7: Already exists
+6e2f8b9a9ee9: Already exists
+924b9d2df025: Already exists
+678f1e6022b3: Already exists
+4f4fb700ef54: Already exists
+617221c9a7af: Already exists
+a53173c1c808: Already exists
+b1294942f333: Already exists
+2d7f31ac40ab: Already exists
+8a37cd0cea20: Already exists
+ab23dd4d648e: Already exists
+416e23c20669: Already exists
+d9889416bbb1: Already exists
+5c0d36624042: Already exists
+4f4fb700ef54: Already exists
+3b5f5ebec89f: Already exists
+4f4fb700ef54: Already exists
+4f4fb700ef54: Already exists
+a7c2934fecc6: Already exists
+2f8b8a6d86fb: Already exists
+c7f6192f7211: Already exists
+4f4fb700ef54: Already exists
+ab8b8e7dd271: Already exists
+97adb4f678bd: Already exists
+ac866d2b0165: Already exists
+d4ae04224219: Already exists
+0bb71a9eb5be: Already exists
+1c2368623f12: Already exists
+ea1bd45f05e6: Already exists
+788feb76e034: Already exists
+76fd96752570: Pulling fs layer
+76fd96752570: Verifying Checksum
+76fd96752570: Download complete
+76fd96752570: Pull complete
+Digest: sha256:0967ecaced06e52fd0dc185b0c7ddda4f57b5b43655bbc858a2567ad0fb9e267
+Status: Downloaded newer image for aigmkt/vllm-dev:ainic3
+srun: error: mia1-p01-g06: task 0: Exited with exit code 137
+srun: Terminating StepId=6088.4
+srun: error: mia1-p01-g07: task 1: Exited with exit code 137

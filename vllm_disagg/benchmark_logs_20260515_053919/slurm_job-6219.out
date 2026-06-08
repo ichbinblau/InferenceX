@@ -1,0 +1,75 @@
+=== Job Start Time ===
+UTC Time: 2026-05-15 05:39:19 UTC
+PST Time: 2026-05-14 22:39:19 PDT
+ENGINE: vllm-disagg
+=======================
+
+Model found: Kimi-K2.5-MXFP4
+Runfile set: server.sh
+Looking for model: Kimi-K2.5-MXFP4 (disk dir: models--amd--Kimi-K2.5-MXFP4)
+Found MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+Final MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+NUM_NODES: 2 (xP=1 + yD=1)
+
+Selected nodes: mia1-p01-g06,mia1-p01-g07
+Node IPs: 10.24.112.182 10.24.112.183
+MASTER_NODE: mia1-p01-g06
+NODE0_ADDR:  10.24.112.182
+NNODES:      2
+REPO DIR:    /it-share/thshan/InferenceX
+USER:        thshan@amd.com
+Refreshing NFS caches on all nodes...
+NFS cache refreshed on mia1-p01-g06
+NFS cache refreshed on mia1-p01-g07
+Rank 0 on mia1-p01-g06
+Rank 1 on mia1-p01-g07
+[docker-detect] rank 0: DOCKER_CMD=docker
+[docker-detect] rank 1: DOCKER_CMD=docker
+45b108ef2604
+599426f84064
+8278936e2c84
+afcdfa042cb9
+94ba15458ae5
+21986a0b874a
+e5085239ed6d
+fe6436b98e9d
+9431644327c4
+4214247b91ff
+fe99f4be1608
+d62e7d0daf17
+5f50ba99c325
+889743b396a4
+38681a389b9c
+2da9a3d0dddb
+6b791cabe0f9
+612b66aafd4b
+8ace929e2afd
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Installing ibv_devinfo + iproute2 in container...
+Get:1 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy InRelease [2321 B]
+Get:2 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy InRelease [3185 B]
+Get:3 https://repo.radeon.com/rocm/apt/7.2.2 jammy InRelease [2605 B]
+Get:4 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy/main amd64 Packages [3369 B]
+Get:5 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:7 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy/main amd64 Packages [1332 B]
+Get:8 https://repo.radeon.com/rocm/apt/7.2.2 jammy/main amd64 Packages [71.3 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [61.6 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7004 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3915 kB]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1295 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:17 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy InRelease [2367 B]
+Get:18 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7341 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4286 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [86.0 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1602 kB]
+Get:24 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:25 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+Get:27 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy/main amd64 Packages [799 B]

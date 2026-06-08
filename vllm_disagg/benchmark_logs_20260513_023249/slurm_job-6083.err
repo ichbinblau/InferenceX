@@ -1,0 +1,140 @@
+Unable to find image 'vllm/vllm-router:nightly-20260511-e667ebb' locally
+nightly-20260511-e667ebb: Pulling from vllm/vllm-router
+ccaf924377f9: Pulling fs layer
+63c1c7b8e58b: Pulling fs layer
+1a204cbad1a2: Pulling fs layer
+273839f2f1f9: Pulling fs layer
+c4b282e404a9: Pulling fs layer
+ecb86ffa223d: Pulling fs layer
+5c1a1c788e18: Pulling fs layer
+fd1b8e647b88: Pulling fs layer
+8b4c39d03e9d: Pulling fs layer
+973f2f37b54e: Pulling fs layer
+c131582579e2: Pulling fs layer
+1f25db12fd7b: Pulling fs layer
+f398ce07d95f: Pulling fs layer
+c4b282e404a9: Waiting
+ecb86ffa223d: Waiting
+c131582579e2: Waiting
+5c1a1c788e18: Waiting
+f398ce07d95f: Waiting
+fd1b8e647b88: Waiting
+1f25db12fd7b: Waiting
+8b4c39d03e9d: Waiting
+973f2f37b54e: Waiting
+273839f2f1f9: Waiting
+63c1c7b8e58b: Verifying Checksum
+63c1c7b8e58b: Download complete
+273839f2f1f9: Verifying Checksum
+273839f2f1f9: Download complete
+1a204cbad1a2: Verifying Checksum
+1a204cbad1a2: Download complete
+ccaf924377f9: Download complete
+ecb86ffa223d: Verifying Checksum
+ecb86ffa223d: Download complete
+c4b282e404a9: Verifying Checksum
+c4b282e404a9: Download complete
+5c1a1c788e18: Download complete
+fd1b8e647b88: Verifying Checksum
+fd1b8e647b88: Download complete
+973f2f37b54e: Verifying Checksum
+973f2f37b54e: Download complete
+c131582579e2: Verifying Checksum
+c131582579e2: Download complete
+1f25db12fd7b: Verifying Checksum
+1f25db12fd7b: Download complete
+8b4c39d03e9d: Verifying Checksum
+8b4c39d03e9d: Download complete
+ccaf924377f9: Pull complete
+63c1c7b8e58b: Pull complete
+f398ce07d95f: Verifying Checksum
+f398ce07d95f: Download complete
+1a204cbad1a2: Pull complete
+273839f2f1f9: Pull complete
+c4b282e404a9: Pull complete
+ecb86ffa223d: Pull complete
+5c1a1c788e18: Pull complete
+fd1b8e647b88: Pull complete
+8b4c39d03e9d: Pull complete
+973f2f37b54e: Pull complete
+c131582579e2: Pull complete
+1f25db12fd7b: Pull complete
+f398ce07d95f: Pull complete
+Digest: sha256:d26d51205ae6048ddaa08cfe308ce25dcec4b1846b02351499521bc5f5fd1ab5
+Status: Downloaded newer image for vllm/vllm-router:nightly-20260511-e667ebb
+Unable to find image 'aigmkt/vllm-dev:ainic2' locally
+ainic2: Pulling from aigmkt/vllm-dev
+ad1a9d392ffd: Already exists
+41b585b74eb7: Already exists
+6e2f8b9a9ee9: Already exists
+924b9d2df025: Already exists
+678f1e6022b3: Already exists
+4f4fb700ef54: Already exists
+617221c9a7af: Already exists
+a53173c1c808: Already exists
+b1294942f333: Already exists
+2d7f31ac40ab: Already exists
+8a37cd0cea20: Already exists
+ab23dd4d648e: Already exists
+416e23c20669: Already exists
+d9889416bbb1: Already exists
+5c0d36624042: Already exists
+4f4fb700ef54: Already exists
+3b5f5ebec89f: Already exists
+4f4fb700ef54: Already exists
+4f4fb700ef54: Already exists
+a7c2934fecc6: Already exists
+2f8b8a6d86fb: Already exists
+c7f6192f7211: Already exists
+4f4fb700ef54: Already exists
+ab8b8e7dd271: Already exists
+97adb4f678bd: Already exists
+ac866d2b0165: Already exists
+d4ae04224219: Already exists
+0bb71a9eb5be: Already exists
+1c2368623f12: Already exists
+ea1bd45f05e6: Already exists
+788feb76e034: Pulling fs layer
+788feb76e034: Verifying Checksum
+788feb76e034: Download complete
+788feb76e034: Pull complete
+Digest: sha256:7a45d44f2f807c45862f706572f7960b15b262eff271fc454c64ddbb892fad6d
+Status: Downloaded newer image for aigmkt/vllm-dev:ainic2
+Unable to find image 'aigmkt/vllm-dev:ainic2' locally
+ainic2: Pulling from aigmkt/vllm-dev
+ad1a9d392ffd: Already exists
+41b585b74eb7: Already exists
+6e2f8b9a9ee9: Already exists
+924b9d2df025: Already exists
+678f1e6022b3: Already exists
+4f4fb700ef54: Already exists
+617221c9a7af: Already exists
+a53173c1c808: Already exists
+b1294942f333: Already exists
+2d7f31ac40ab: Already exists
+8a37cd0cea20: Already exists
+ab23dd4d648e: Already exists
+416e23c20669: Already exists
+d9889416bbb1: Already exists
+5c0d36624042: Already exists
+4f4fb700ef54: Already exists
+3b5f5ebec89f: Already exists
+4f4fb700ef54: Already exists
+4f4fb700ef54: Already exists
+a7c2934fecc6: Already exists
+2f8b8a6d86fb: Already exists
+c7f6192f7211: Already exists
+4f4fb700ef54: Already exists
+ab8b8e7dd271: Already exists
+97adb4f678bd: Already exists
+ac866d2b0165: Already exists
+d4ae04224219: Already exists
+0bb71a9eb5be: Already exists
+1c2368623f12: Already exists
+ea1bd45f05e6: Already exists
+788feb76e034: Pulling fs layer
+788feb76e034: Verifying Checksum
+788feb76e034: Download complete
+788feb76e034: Pull complete
+Digest: sha256:7a45d44f2f807c45862f706572f7960b15b262eff271fc454c64ddbb892fad6d
+Status: Downloaded newer image for aigmkt/vllm-dev:ainic2

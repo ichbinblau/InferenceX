@@ -74,6 +74,7 @@ def stats_for(prefix: str, values: list[float]) -> dict:
         return {}
     out = {
         f"mean_{prefix}": statistics.mean(values),
+        f"median_{prefix}": statistics.median(values),
         f"p75_{prefix}": percentile(values, 75),
         f"p90_{prefix}": percentile(values, 90),
         f"p95_{prefix}": percentile(values, 95),

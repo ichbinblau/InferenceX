@@ -55,54 +55,74 @@ source "$(dirname "$0")/../../benchmark_lib.sh"
 
 REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 
+PORT="${ROUTER_PORT}"
+MODEL="${MODEL:-${BENCH_MODEL}}"
+DURATION="${DURATION:-1800}"
+export MODEL DURATION
+RESULT_DIR="${RESULT_DIR:-${profile_folder}}"
+AGENTIC_OUTPUT_DIR="${AGENTIC_OUTPUT_DIR:-${REPO_ROOT}}"
+export AGENTIC_OUTPUT_DIR
+RESULT_FILENAME_BASE="${RESULT_FILENAME:-agentic_bench}"
+
+mkdir -p "$RESULT_DIR"
+
+resolve_trace_source
+install_agentic_deps
+
+ANY_FAILED=0
 for max_concurrency in "${chosen_concurrencies[@]}"; do
 
-    export_file="${profile_folder}/concurrency_${max_concurrency}_req_rate_${chosen_req_rate}_gpus_$((prefill_gpus+decode_gpus))_ctx_${prefill_gpus}_gen_${decode_gpus}"
+    echo "=========================================="
+    echo "Agentic trace replay: conc=$max_concurrency"
+    echo "=========================================="
 
-    num_prompts=$(( max_concurrency * num_prompts_multiplier ))
-    if [[ "$num_prompts" -lt 16 ]]; then
-        num_prompts=16
+    CONC_RESULT_DIR="$RESULT_DIR/conc${max_concurrency}"
+    mkdir -p "$CONC_RESULT_DIR"
+
+    CONC="$max_concurrency"
+    USERS="$max_concurrency"
+    export CONC USERS
+    build_replay_cmd "$CONC_RESULT_DIR"
+    echo "$REPLAY_CMD" > "$CONC_RESULT_DIR/benchmark_command.txt"
+
+    set +e
+    $REPLAY_CMD 2>&1 | tee "$CONC_RESULT_DIR/benchmark.log"
+    REPLAY_RC=${PIPESTATUS[0]}
+    set -e
+
+    PER_CONC_RESULT_FILENAME="${RESULT_FILENAME_BASE}_conc${max_concurrency}"
+    RESULT_DIR="$CONC_RESULT_DIR" \
+        AGENTIC_OUTPUT_DIR="$AGENTIC_OUTPUT_DIR" \
+        RESULT_FILENAME="$PER_CONC_RESULT_FILENAME" \
+        USERS="$max_concurrency" \
+        python3 "$INFMAX_CONTAINER_WORKSPACE/utils/process_agentic_result.py" || {
+            echo "WARNING: process_agentic_result.py failed for conc=$max_concurrency" >&2
+            ANY_FAILED=1
+        }
+
+    python3 "$AGENTIC_DIR/scripts/analyze_benchmark_distributions.py" \
+        "$CONC_RESULT_DIR/aiperf_artifacts" -o "$CONC_RESULT_DIR" 2>&1 || true
+
+    # Generate metrics_plots.png from the aiperf artifacts. Best-effort:
+    # don't fail the run if plotting has trouble (e.g. matplotlib missing).
+    python3 "$INFMAX_CONTAINER_WORKSPACE/utils/generate_aiperf_plots.py" \
+        "$CONC_RESULT_DIR" 2>&1 || true
+
+    if [ "$REPLAY_RC" -ne 0 ]; then
+        echo "WARNING: agentic trace replay for conc=$max_concurrency exited with code $REPLAY_RC after writing available results" >&2
+        ANY_FAILED=1
     fi
-
-    echo "profile_folder: $profile_folder"
-    echo "max_concurrency: $max_concurrency"
-    echo "chosen_req_rate: $chosen_req_rate"
-    echo "MODEL_PATH: $MODEL_PATH"
-    echo "ROUTER_PORT: $ROUTER_PORT"
-    echo "chosen_isl: $chosen_isl"
-    echo "chosen_osl: $chosen_osl"
-    echo "num_prompts: $num_prompts"
-    echo "export_file: $export_file"
-
-    # Engine-specific extra flags
-    extra_flags=""
-    if [[ "$ENGINE" == "vllm-disagg" ]]; then
-        extra_flags="--trust-remote-code --tokenizer $MODEL_PATH"
-    else
-        if [ "$IS_MTP" = "true" ]; then
-            extra_flags="--use-chat-template"
-        fi
-    fi
-
-    run_benchmark_serving \
-        --bench-serving-dir "$REPO_ROOT" \
-        --model "$BENCH_MODEL" \
-        --port "$ROUTER_PORT" \
-        --backend openai \
-        --input-len "$chosen_isl" \
-        --output-len "$chosen_osl" \
-        --random-range-ratio "$random_range_ratio" \
-        --num-prompts "$num_prompts" \
-        --max-concurrency "$max_concurrency" \
-        --result-filename "$export_file" \
-        --result-dir /workspace/ \
-        $extra_flags
 
     echo "-----------------------------------------"
 
-    # vLLM: cooldown between rounds for idle KV block reaper
     if [[ "$ENGINE" == "vllm-disagg" ]]; then
         echo "[BENCH] Cooldown: waiting 10s for idle KV block reaper..."
         sleep 10
     fi
 done
+
+export RESULT_FILENAME="$RESULT_FILENAME_BASE"
+
+if [ "$ANY_FAILED" -ne 0 ]; then
+    echo "WARNING: at least one conc had a non-zero exit; per-conc result files were still written when possible." >&2
+fi

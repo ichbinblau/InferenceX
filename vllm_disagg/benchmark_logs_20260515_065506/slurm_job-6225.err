@@ -1,0 +1,9 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 6225.11 ON mia1-p01-g06 CANCELLED AT 2026-05-15T08:10:38 ***
+srun: error: mia1-p01-g07: task 1: Exited with exit code 143
+srun: Terminating StepId=6225.11
+srun: error: mia1-p01-g06: task 0: Terminated
+srun: error: Slurm job 6225 has expired
+srun: Check SLURM_JOB_ID environment variable. Expired or invalid job 6225
+srun: error: Slurm job 6225 has expired
+srun: Check SLURM_JOB_ID environment variable. Expired or invalid job 6225

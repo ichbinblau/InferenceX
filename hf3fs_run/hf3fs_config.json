@@ -1,0 +1,7 @@
+{
+    "file_path_prefix": "/run_logs/hf3fs_pd/kvcache",
+    "file_size": 107374182800,
+    "numjobs": 16,
+    "entries": 8,
+    "metadata_server_url": "http://10.24.112.181:18000"
+}

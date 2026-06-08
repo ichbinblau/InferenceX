@@ -130,6 +130,12 @@ if [[ "$ENGINE" == "vllm-disagg" ]]; then
         found && /^[^ ]/{exit}
         found && /hf_dir:/{gsub(/[" ]/, "", $2); print $2; exit}' "$MODELS_YAML")
     DISK_DIR_NAME="${DISK_DIR_NAME:-$MODEL_NAME}"
+    # Optional override of the on-disk directory name (e.g. to point at a
+    # flattened/dereferenced HF snapshot that fixes remote-code symlink imports).
+    if [[ -n "${MODEL_DISK_DIR_OVERRIDE:-}" ]]; then
+        DISK_DIR_NAME="$MODEL_DISK_DIR_OVERRIDE"
+        echo "[INFO] DISK_DIR_NAME overridden via MODEL_DISK_DIR_OVERRIDE=$DISK_DIR_NAME"
+    fi
     echo "Looking for model: $MODEL_NAME (disk dir: $DISK_DIR_NAME)"
 
     resolve_hf_cache_path() {
@@ -314,7 +320,7 @@ SANITIZED_USER=$(echo "$USER_NAME" | tr -c 'a-zA-Z0-9_.-' '_')
 export DOCKER_CONT_NAME="container_${ENGINE}_${SANITIZED_USER}_${MODEL_NAME}_${SLURM_JOB_ID}"
 
 # vLLM external router container
-VLLM_ROUTER_IMAGE="${VLLM_ROUTER_IMAGE:-vllm/vllm-router:nightly-20260511-e667ebb}"
+VLLM_ROUTER_IMAGE="${VLLM_ROUTER_IMAGE:-vllm/vllm-router:nightly}"
 ROUTER_CONT_NAME="router_vllm_${SANITIZED_USER}_${SLURM_JOB_ID}"
 export RUN_FILE_FULL="$WS_PATH/${RUN_FILE}"
 
@@ -378,11 +384,40 @@ DOCKER_ENV_COMMON=(
     -e PREFILL_TP_SIZE=\$PREFILL_TP_SIZE
     -e PREFILL_ENABLE_EP=\$PREFILL_ENABLE_EP
     -e PREFILL_ENABLE_DP=\$PREFILL_ENABLE_DP
+    -e PREFILL_CONTEXT_LENGTH=\${PREFILL_CONTEXT_LENGTH:-}
+    -e MAX_MODEL_LEN=\${MAX_MODEL_LEN:-}
+    -e OFFLOADING=\${OFFLOADING:-none}
+    -e ENABLE_PREFIX_CACHING=\${ENABLE_PREFIX_CACHING:-}
+    -e IBDEVICES=\${IBDEVICES:-}
+    -e DISAGG_TRANSFER_BACKEND=\${DISAGG_TRANSFER_BACKEND:-}
+    -e DECODE_RADIX_CACHE=\${DECODE_RADIX_CACHE:-}
+    -e ROUTER_POLICY=\${ROUTER_POLICY:-}
+    -e PREFILL_ROUTER_POLICY=\${PREFILL_ROUTER_POLICY:-}
+    -e DECODE_ROUTER_POLICY=\${DECODE_ROUTER_POLICY:-}
+    -e HICACHE_SIZE_GB=\${HICACHE_SIZE_GB:-}
+    -e HICACHE_TOTAL_CPU_DRAM_GB=\${HICACHE_TOTAL_CPU_DRAM_GB:-}
+    -e HICACHE_HOST_POOL_COUNT=\${HICACHE_HOST_POOL_COUNT:-}
+    -e HICACHE_PAGE_SIZE=\${HICACHE_PAGE_SIZE:-}
+    -e HICACHE_IO_BACKEND=\${HICACHE_IO_BACKEND:-}
+    -e HICACHE_MEM_LAYOUT=\${HICACHE_MEM_LAYOUT:-}
+    -e HICACHE_WRITE_POLICY=\${HICACHE_WRITE_POLICY:-}
+    -e HICACHE_STORAGE_BACKEND=\${HICACHE_STORAGE_BACKEND:-}
+    -e HICACHE_DECODE=\${HICACHE_DECODE:-}
+    -e MC_UPGRADE=\${MC_UPGRADE:-}
+    -e MC_PATCH_HOSTPOOL=\${MC_PATCH_HOSTPOOL:-}
+    -e MC_MASTER_PORT=\${MC_MASTER_PORT:-}
+    -e MC_METRICS_PORT=\${MC_METRICS_PORT:-}
+    -e MC_PROTOCOL=\${MC_PROTOCOL:-}
+    -e MC_GLOBAL_SEG=\${MC_GLOBAL_SEG:-}
+    -e MC_DEVICE=\${MC_DEVICE:-}
+    -e MC_MASTER_ADDR=\${MC_MASTER_ADDR:-}
     -e DECODE_TP_SIZE=\$DECODE_TP_SIZE
     -e DECODE_ENABLE_EP=\$DECODE_ENABLE_EP
     -e DECODE_ENABLE_DP=\$DECODE_ENABLE_DP
     -e DECODE_MTP_SIZE=\$DECODE_MTP_SIZE
     -e IS_MULTINODE=\$IS_MULTINODE
+    -e MODEL=\${MODEL:-}
+    -e DURATION=\${DURATION:-1800}
 )
 
 # Engine-specific env vars
@@ -475,6 +510,7 @@ fi
     --device=/dev/infiniband/uverbs7 \
     --ulimit memlock=-1 \
     --ulimit stack=67108864 \
+    --ulimit core=-1 \
     --network host \
     --ipc host \
     --group-add video \
@@ -487,6 +523,7 @@ fi
     -v \$HOME/.ssh:/root/.ssh \
     --shm-size 128G \
     -v /tmp:/run_logs \
+    -v /tmp/coredumps:/coredumps \
     -v ${BENCHMARK_LOGS_DIR}:/benchmark_logs \
     -v ${DI_REPO_DIR}:${DOCKER_MOUNT_PATH} \
     ${EXTRA_DOCKER_MOUNTS:-} \

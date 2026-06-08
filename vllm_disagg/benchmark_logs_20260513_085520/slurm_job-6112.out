@@ -1,0 +1,466 @@
+=== Job Start Time ===
+UTC Time: 2026-05-13 08:55:20 UTC
+PST Time: 2026-05-13 01:55:20 PDT
+ENGINE: vllm-disagg
+=======================
+
+Model found: Kimi-K2.5-MXFP4
+Runfile set: server.sh
+Looking for model: Kimi-K2.5-MXFP4 (disk dir: models--amd--Kimi-K2.5-MXFP4)
+Found MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+Final MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+NUM_NODES: 2 (xP=1 + yD=1)
+
+Selected nodes: mia1-p01-g06,mia1-p01-g07
+Node IPs: 10.24.112.182 10.24.112.183
+MASTER_NODE: mia1-p01-g06
+NODE0_ADDR:  10.24.112.182
+NNODES:      2
+REPO DIR:    /it-share/thshan/InferenceX
+USER:        thshan@amd.com
+Refreshing NFS caches on all nodes...
+NFS cache refreshed on mia1-p01-g07
+NFS cache refreshed on mia1-p01-g06
+Rank 1 on mia1-p01-g07
+Rank 0 on mia1-p01-g06
+5f0c79f4dd50
+3e3dda1041a3
+b029835dbcf7
+e314b9a1df88
+db9a547fea9d
+bba29b974aab
+4de00a3e4aeb
+a2f207c2eeb1
+ea420119c692
+a58d3f2e9ae3
+60b38eeac094
+563d2753909d04e8ad907a17472d066da7eb479ae055ca9b168c4a88f5f3606c
+a10a7afb7b66
+afcdfa042cb9
+94ba15458ae5
+21986a0b874a
+e5085239ed6d
+fe6436b98e9d
+9431644327c4
+4214247b91ff
+fe99f4be1608
+d62e7d0daf17
+5f50ba99c325
+889743b396a4
+38681a389b9c
+2da9a3d0dddb
+6b791cabe0f9
+612b66aafd4b
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Container RDMA/net tools already present
+[SETUP] amd-quark already present
+INFO 05-13 08:55:41 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:55:41 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:55:41 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: layer.py
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Container RDMA/net tools already present
+[SETUP] amd-quark already present
+INFO 05-13 08:55:45 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 08:55:52 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:55:52 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:55:52 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: layer.py
+INFO 05-13 08:55:56 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-13 08:55:57 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 08:56:00 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-13 08:56:04 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 08:56:05 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+INFO 05-13 08:56:08 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-13 08:56:09 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:09 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:09 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+INFO 05-13 08:56:12 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-13 08:56:15 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:15 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:15 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: idle KV block reaper for prefill
+INFO 05-13 08:56:16 [moriio_engine.py:54] MoRIIO is available
+INFO 05-13 08:56:16 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+INFO 05-13 08:56:20 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:20 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:20 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+INFO 05-13 08:56:21 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:21 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:21 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Installed: MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 50s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.183
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.183
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g07
+Port 5000 is now open on 10.24.112.183.
+Waiting for nodes.[5000, 5000],['10.24.112.182', '10.24.112.183'] . . (600s remaining)
+INFO 05-13 08:56:26 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:26 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:26 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched: idle KV block reaper for prefill
+Waiting for nodes.[5000, 5000],['10.24.112.182', '10.24.112.183'] . . (595s remaining)
+Waiting for nodes.[5000, 5000],['10.24.112.182', '10.24.112.183'] . . (590s remaining)
+INFO 05-13 08:56:32 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-13 08:56:32 [nixl_utils.py:34] NIXL is not available
+WARNING 05-13 08:56:32 [nixl_utils.py:44] NIXL agent config is not available
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 50s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ head -n 1
+++++ awk '{print $5}'
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.182
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.182
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g06
+Port 5000 is now open on 10.24.112.182.
+Port 5000 has been closed on 10.24.112.182.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+NODE INFO =======================================
+================================================
+Node List : mia1-p01-g06,mia1-p01-g07
+Node IPs  : 10.24.112.182,10.24.112.183
+Model     : Kimi-K2.5-MXFP4
+================================================
+CLUSTER INFO ====================================
+================================================
+mia1-p01-g06:10.24.112.182 is Proxy Node and Prefill Node
+Using prefill config: --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Prefill servers: 10.24.112.182 
+Decode  servers: 10.24.112.183 
+================================================
+Using external vllm-router container (started by job.slurm on this node)
+++ set +x
+Waiting for all prefill and decode servers to be up . . .
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_producer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1800s remaining)
+Port 5000 has been closed on 10.24.112.183.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+mia1-p01-g07:10.24.112.183 is Decode Node (Model: Kimi-K2.5-MXFP4)
+Using decode config: --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+++ set +x
+Waiting for proxy server to be up...
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_consumer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting until proxy server closes...
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1795s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1790s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1785s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1780s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1775s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1770s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1765s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1760s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1755s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1750s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1745s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1740s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1735s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1730s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1725s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1720s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1715s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1710s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1705s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1700s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1695s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1690s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1685s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1680s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1675s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1670s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1665s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1660s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1655s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1650s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1645s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1640s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1635s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1630s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1625s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1620s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1615s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1610s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1605s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1600s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1595s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1590s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1585s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1580s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1575s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1570s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1565s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1560s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1555s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1550s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1545s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1540s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1535s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1530s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1525s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1520s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1515s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1510s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1505s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1500s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1495s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1490s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1485s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1480s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1475s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1470s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1465s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1460s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1455s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1450s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1445s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1440s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1435s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1430s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1425s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1420s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1415s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1410s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1405s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1400s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1395s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1390s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1385s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1380s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1375s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1370s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1365s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1360s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1355s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1350s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1345s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1340s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1335s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1330s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1325s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1320s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1315s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1310s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1305s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1300s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1295s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1290s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1285s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1280s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1275s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1270s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1265s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1260s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1255s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1250s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1245s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1240s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1235s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1230s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1225s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1220s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1215s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1210s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1205s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1200s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1195s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1190s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1185s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1180s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1175s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1170s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1165s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1160s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1155s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1150s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1145s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1140s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1135s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1130s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1125s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1120s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1115s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1110s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1105s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1100s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1095s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1090s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1085s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1080s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1075s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1070s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1065s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1060s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1055s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1050s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1045s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1040s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1035s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1030s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1025s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1020s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1015s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1010s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1005s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1000s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (995s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (990s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (985s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (980s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (975s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (970s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (965s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (960s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (955s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (950s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (945s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (940s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (935s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (930s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (925s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (920s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (915s remaining)
+[6112] termination received on mia1-p01-g07; cleaning up...
+[6112] cleanup done.
+container_vllm-disagg_thshan_amd.com__Kimi-K2.5-MXFP4_6112
+container_vllm-disagg_thshan_amd.com__Kimi-K2.5-MXFP4_6112
+router_vllm_thshan_amd.com__6112

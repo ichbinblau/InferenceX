@@ -178,6 +178,37 @@ if [[ "${DECODE_ENABLE_DP:-false}" == "true" ]] && ! echo "$DECODE_SERVER_CONFIG
     DECODE_SERVER_CONFIG+=" --enable-dp-attention"
 fi
 
+# Optional: force-enable APC / prefix caching (vLLM's "radix cache"). Some model
+# entries ship --no-enable-prefix-caching (e.g. Kimi-K2.5-MXFP4); when
+# ENABLE_PREFIX_CACHING=1 we strip that opt-out and add --enable-prefix-caching
+# to both prefill and decode servers. Gated by the env var so other recipes are
+# unaffected.
+if [[ "${ENABLE_PREFIX_CACHING:-0}" == "1" ]]; then
+    for _cfg in PREFILL_SERVER_CONFIG DECODE_SERVER_CONFIG; do
+        _val="${!_cfg}"
+        _val="${_val//--no-enable-prefix-caching/}"
+        if ! echo "$_val" | grep -q -- '--enable-prefix-caching'; then
+            _val+=" --enable-prefix-caching"
+        fi
+        printf -v "$_cfg" '%s' "$_val"
+    done
+    echo "[vLLM] ENABLE_PREFIX_CACHING=1 -> prefix/radix cache enabled on prefill + decode"
+fi
+
+# Normalize the MoRI all2all backend name. Older recipes pass the bare
+# "--all2all-backend mori", but newer vLLM images only accept the split names
+# (mori_high_throughput / mori_low_latency) and abort with "invalid choice".
+# Rewrite the bare token to a valid mode (override via VLLM_ALL2ALL_BACKEND).
+# _ALL2ALL_MODE="${VLLM_ALL2ALL_BACKEND:-mori_high_throughput}"
+# for _cfg in PREFILL_SERVER_CONFIG DECODE_SERVER_CONFIG; do
+#     _val="${!_cfg}"
+#     _new=$(echo "$_val" | sed -E "s/(--all2all-backend[[:space:]]+)mori( |$)/\1${_ALL2ALL_MODE}\2/g")
+#     if [[ "$_new" != "$_val" ]]; then
+#         printf -v "$_cfg" '%s' "$_new"
+#         echo "[vLLM] Normalized --all2all-backend mori -> ${_ALL2ALL_MODE} in ${_cfg}"
+#     fi
+# done
+
 echo "PREFILL_SERVER_CONFIG (after TP/EP/DP): $PREFILL_SERVER_CONFIG"
 echo "DECODE_SERVER_CONFIG (after TP/EP/DP): $DECODE_SERVER_CONFIG"
 

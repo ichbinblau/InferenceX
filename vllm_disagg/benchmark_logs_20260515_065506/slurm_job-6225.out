@@ -1,0 +1,656 @@
+=== Job Start Time ===
+UTC Time: 2026-05-15 06:55:06 UTC
+PST Time: 2026-05-14 23:55:06 PDT
+ENGINE: vllm-disagg
+=======================
+
+Model found: Kimi-K2.5-MXFP4
+Runfile set: server.sh
+Looking for model: Kimi-K2.5-MXFP4 (disk dir: models--amd--Kimi-K2.5-MXFP4)
+Found MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+Final MODEL_PATH: /it-share/thshan/models/hub/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+NUM_NODES: 2 (xP=1 + yD=1)
+
+Selected nodes: mia1-p01-g06,mia1-p01-g07
+Node IPs: 10.24.112.182 10.24.112.183
+MASTER_NODE: mia1-p01-g06
+NODE0_ADDR:  10.24.112.182
+NNODES:      2
+REPO DIR:    /it-share/thshan/InferenceX
+USER:        thshan@amd.com
+Refreshing NFS caches on all nodes...
+NFS cache refreshed on mia1-p01-g07
+NFS cache refreshed on mia1-p01-g06
+Rank 0 on mia1-p01-g06
+Rank 1 on mia1-p01-g07
+[docker-detect] rank 0: DOCKER_CMD=docker
+[docker-detect] rank 1: DOCKER_CMD=docker
+4dc637bd2b81
+696d5334b762
+fca50e2cc08c
+f7c33598615b
+db9a547fea9d
+4de00a3e4aeb
+a2f207c2eeb1
+ea420119c692
+a58d3f2e9ae3
+60b38eeac094
+599426f84064
+8278936e2c84
+afcdfa042cb9
+94ba15458ae5
+21986a0b874a
+e5085239ed6d
+fe6436b98e9d
+9431644327c4
+4214247b91ff
+fe99f4be1608
+d62e7d0daf17
+5f50ba99c325
+889743b396a4
+38681a389b9c
+2da9a3d0dddb
+6b791cabe0f9
+612b66aafd4b
+0cbb95666eaebb0f81086531d6a4483f8a87a19d95a123317a2af25d4b690e06
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Installing ibv_devinfo + iproute2 in container...
+Get:1 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy InRelease [2321 B]
+Get:2 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy InRelease [3185 B]
+Get:3 https://repo.radeon.com/rocm/apt/7.2.2 jammy InRelease [2605 B]
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Installing ibv_devinfo + iproute2 in container...
+Get:4 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy/main amd64 Packages [3369 B]
+Get:1 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy InRelease [2321 B]
+Get:2 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy InRelease [3185 B]
+Get:3 https://repo.radeon.com/rocm/apt/7.2.2 jammy InRelease [2605 B]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:5 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy/main amd64 Packages [3369 B]
+Get:5 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy/main amd64 Packages [1332 B]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:7 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy/main amd64 Packages [1332 B]
+Get:8 https://repo.radeon.com/rocm/apt/7.2.2 jammy/main amd64 Packages [71.3 kB]
+Get:8 https://repo.radeon.com/rocm/apt/7.2.2 jammy/main amd64 Packages [71.3 kB]
+Get:9 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1295 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [61.6 kB]
+Get:11 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7004 kB]
+Get:12 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy InRelease [2367 B]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7004 kB]
+Get:11 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy InRelease [2367 B]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3915 kB]
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1295 kB]
+Get:13 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3915 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:15 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [61.6 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:18 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy/main amd64 Packages [799 B]
+Get:19 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7341 kB]
+Get:19 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:21 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy/main amd64 Packages [799 B]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1602 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [86.0 kB]
+Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4286 kB]
+Get:25 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4286 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1602 kB]
+Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7341 kB]
+Get:25 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [86.0 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:28 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main amd64 Packages [38.9 kB]
+Get:28 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main amd64 Packages [38.9 kB]
+Fetched 46.2 MB in 1s (37.4 MB/s)
+Reading package lists...Fetched 46.2 MB in 1s (34.7 MB/s)
+Reading package lists...
+W: https://repo.radeon.com/amdgpu/30.30.1/ubuntu/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.radeon.com/rocm/apt/7.2.2/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+
+W: https://repo.radeon.com/amdgpu/30.30.1/ubuntu/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.radeon.com/rocm/apt/7.2.2/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...Reading package lists...
+Building dependency tree...
+Building dependency tree...
+Reading state information...
+
+Reading state information...
+The following additional packages will be installed:
+  libatm1 libbpf0 libmnl0 libxtables12
+Suggested packages:
+  iproute2-doc
+The following NEW packages will be installed:
+  ibverbs-utils iproute2 libatm1 libbpf0 libmnl0 libxtables12
+The following additional packages will be installed:
+  libatm1 libbpf0 libmnl0 libxtables12
+Suggested packages:
+  iproute2-doc
+0 upgraded, 6 newly installed, 0 to remove and 15 not upgraded.
+Need to get 1337 kB of archives.
+After this operation, 3876 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libbpf0 amd64 1:0.5.0-1ubuntu22.04.1 [140 kB]
+The following NEW packages will be installed:
+  ibverbs-utils iproute2 libatm1 libbpf0 libmnl0 libxtables12
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmnl0 amd64 1.0.4-3build2 [13.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxtables12 amd64 1.8.7-1ubuntu5.2 [31.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 iproute2 amd64 5.15.0-1ubuntu2.1 [1072 kB]
+0 upgraded, 6 newly installed, 0 to remove and 15 not upgraded.
+Need to get 1337 kB of archives.
+After this operation, 3876 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libbpf0 amd64 1:0.5.0-1ubuntu22.04.1 [140 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 libatm1 amd64 1:2.5.1-4build2 [22.8 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ibverbs-utils amd64 39.0-1 [57.3 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmnl0 amd64 1.0.4-3build2 [13.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxtables12 amd64 1.8.7-1ubuntu5.2 [31.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 iproute2 amd64 5.15.0-1ubuntu2.1 [1072 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 libatm1 amd64 1:2.5.1-4build2 [22.8 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ibverbs-utils amd64 39.0-1 [57.3 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 1337 kB in 0s (26.6 MB/s)
+Selecting previously unselected package libbpf0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69270 files and directories currently installed.)
+Preparing to unpack .../0-libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../1-libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Fetched 1337 kB in 0s (23.7 MB/s)
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../2-libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Selecting previously unselected package libbpf0:amd64.
+(Reading database ... Selecting previously unselected package iproute2.
+Preparing to unpack .../3-iproute2_5.15.0-1ubuntu2.1_amd64.deb ...
+(Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%Unpacking iproute2 (5.15.0-1ubuntu2.1) ...
+(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69270 files and directories currently installed.)
+Preparing to unpack .../0-libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../4-libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../1-libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Selecting previously unselected package ibverbs-utils.
+Preparing to unpack .../5-ibverbs-utils_39.0-1_amd64.deb ...
+Unpacking ibverbs-utils (39.0-1) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../2-libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up ibverbs-utils (39.0-1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.1) ...
+Selecting previously unselected package iproute2.
+Preparing to unpack .../3-iproute2_5.15.0-1ubuntu2.1_amd64.deb ...
+Unpacking iproute2 (5.15.0-1ubuntu2.1) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../4-libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+Selecting previously unselected package ibverbs-utils.
+Preparing to unpack .../5-ibverbs-utils_39.0-1_amd64.deb ...
+Unpacking ibverbs-utils (39.0-1) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up ibverbs-utils (39.0-1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.1) ...
+[SETUP] amd-quark already present
+Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+[SETUP] amd-quark already present
+[SETUP] Patched: layer.py
+[SETUP] Patched: layer.py
+INFO 05-15 06:55:23 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 06:55:24 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 06:55:35 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-15 06:55:35 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-15 06:55:39 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-15 06:55:39 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-15 06:55:43 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 06:55:43 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+INFO 05-15 06:55:43 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 06:55:44 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+[SETUP] Patched: idle KV block reaper for prefill
+[SETUP] Patched: idle KV block reaper for prefill
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: ibverbs-utils+iproute2 MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 52s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.182
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.182
+[SETUP] Installed: ibverbs-utils+iproute2 MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 53s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ ibv_devinfo
+++++ grep hca_id:
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g07
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
+[PATCH] Added ucx_error_handling_mode=none to /usr/local/lib/python3.12/dist-packages/rixl/_api.py (IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5)
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g06
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.183
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.183
+Port 5000 is now open on 10.24.112.182.
+Waiting for nodes.[5000, 5000],['10.24.112.182', '10.24.112.183'] . . (600s remaining)
+[PATCH] Added ucx_error_handling_mode=none to /usr/local/lib/python3.12/dist-packages/rixl/_api.py (IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5)
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g07
+Port 5000 is now open on 10.24.112.183.
+Port 5000 has been closed on 10.24.112.183.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+mia1-p01-g07:10.24.112.183 is Decode Node (Model: Kimi-K2.5-MXFP4)
+Using decode config: --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+++ set +x
+Waiting for proxy server to be up...
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --served-model-name Kimi-K2.5-MXFP4         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_consumer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting until proxy server closes...
+Port 5000 has been closed on 10.24.112.182.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+NODE INFO =======================================
+================================================
+Node List : mia1-p01-g06,mia1-p01-g07
+Node IPs  : 10.24.112.182,10.24.112.183
+Model     : Kimi-K2.5-MXFP4
+================================================
+CLUSTER INFO ====================================
+================================================
+mia1-p01-g06:10.24.112.182 is Proxy Node and Prefill Node
+Using prefill config: --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Prefill servers: 10.24.112.182 
+Decode  servers: 10.24.112.183 
+================================================
+Using external vllm-router container (started by job.slurm on this node)
+++ set +x
+Waiting for all prefill and decode servers to be up . . .
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --served-model-name Kimi-K2.5-MXFP4         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_producer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1800s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1795s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1790s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1785s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1780s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1775s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1770s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1765s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1760s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1755s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1750s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1745s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1740s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1735s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1730s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1725s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1720s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1715s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1710s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1705s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1700s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1695s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1690s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1685s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1680s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1675s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1670s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1665s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1660s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1655s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1650s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1645s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1640s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1635s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1630s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1625s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1620s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1615s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1610s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1605s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1600s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1595s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1590s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1585s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1580s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1575s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1570s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1565s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1560s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1555s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1550s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1545s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1540s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1535s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1530s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1525s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1520s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1515s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1510s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1505s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1500s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1495s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1490s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1485s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1480s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1475s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1470s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1465s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1460s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1455s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1450s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1445s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1440s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1435s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1430s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1425s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1420s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1415s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1410s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1405s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1400s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1395s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1390s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1385s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1380s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1375s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1370s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1365s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1360s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1355s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1350s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1345s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1340s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1335s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1330s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1325s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1320s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1315s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1310s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1305s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1300s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1295s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1290s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1285s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1280s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1275s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1270s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1265s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1260s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1255s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1250s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1245s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1240s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1235s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1230s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1225s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1220s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1215s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1210s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1205s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1200s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1195s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1190s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1185s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1180s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1175s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1170s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1165s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1160s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1155s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1150s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1145s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1140s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1135s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1130s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1125s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1120s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1115s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1110s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1105s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1100s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1095s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1090s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1085s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1080s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1075s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1070s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1065s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1060s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1055s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1050s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1045s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1040s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1035s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1030s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1025s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1020s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1015s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1010s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1005s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1000s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (995s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (990s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (985s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (980s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (975s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (970s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (965s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (960s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (955s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (950s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (945s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (940s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (935s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (930s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (925s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (920s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (915s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (910s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (905s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (900s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (895s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (890s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (885s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (880s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (875s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (870s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (865s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (860s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (855s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (850s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (845s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (840s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (835s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (830s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (825s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (820s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (815s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (810s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (805s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (800s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (795s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (790s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (785s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (780s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (775s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (770s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (765s remaining)
+Congratulations!!! All prefill and decode servers are up . . .
+Router is ready for benchmarking
+Ready for benchmarking on mia1-p01-g06:10.24.112.182
+Benchmarking on mia1-p01-g06:10.24.112.182
+EVAL_ONLY mode: skipping throughput benchmark
+Running lm-eval evaluation on Node 0...
+/workspace /workspace/benchmarks/multi_node/amd_utils
+WARN: compute_eval_context_length could not determine context length for 
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Eval budget: eval_context_len=16384, max_output_tokens=12288
+++ python3 -m lm_eval --model local-chat-completions --apply_chat_template --tasks utils/evals/gsm8k.yaml --output_path /tmp/eval_out-3JzE7r --log_samples --model_args 'model=Kimi-K2.5-MXFP4,base_url=http://0.0.0.0:30000/v1/chat/completions,api_key=EMPTY,eos_string=</s>,max_retries=5,num_concurrent=8,timeout=1800,tokenized_requests=False,max_length=16384' --gen_kwargs max_tokens=12288,temperature=0,top_p=1
+2026-05-15:07:18:47 INFO     [config.evaluate_config:301] Using default fewshot_as_multiturn=True.
+2026-05-15:07:18:49 INFO     [_cli.run:375] Selected Tasks: [{'tag': ['math_word_problems'], 'task': 'gsm8k', 'dataset_path': 'openai/gsm8k', 'dataset_name': 'main', 'output_type': 'generate_until', 'training_split': 'train', 'fewshot_split': 'train', 'test_split': 'test', 'doc_to_text': 'Question: {{question}}\nEnd your response with the answer on the last line, formatted as: #### [number]\nAnswer:', 'doc_to_target': '{{answer}}', 'metric_list': [{'metric': 'exact_match', 'aggregation': 'mean', 'higher_is_better': True, 'ignore_case': True, 'ignore_punctuation': False, 'regexes_to_ignore': [',', '\\$', '(?s).*#### ', '\\.$']}], 'generation_kwargs': {'until': ['</s>', '<|im_end|>'], 'do_sample': False, 'temperature': 0.0}, 'repeats': 1, 'num_fewshot': 5, 'filter_list': [{'name': 'strict-match', 'filter': [{'function': 'regex', 'group_select': -1, 'regex_pattern': '#### (\\-?[0-9\\.\\,]+)'}, {'function': 'take_first'}]}, {'name': 'flexible-extract', 'filter': [{'function': 'regex', 'group_select': -1, 'regex_pattern': '(-?[$0-9.,]{2,})|(-?[0-9]+)'}, {'function': 'take_first'}]}], 'metadata': {'version': 3.0}}]
+2026-05-15:07:18:49 INFO     [evaluator:203] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-05-15:07:18:49 WARNING  [evaluator:215] generation_kwargs: {'max_tokens': 12288, 'temperature': 0, 'top_p': 1} specified through cli, these settings will update set parameters in yaml tasks. Ensure 'do_sample=True' for non-greedy decoding!
+2026-05-15:07:18:49 INFO     [evaluator:228] Initializing local-chat-completions model, with arguments: {'model': 'Kimi-K2.5-MXFP4', 'base_url': 'http://0.0.0.0:30000/v1/chat/completions', 'api_key': 'EMPTY', 'eos_string': '</s>', 'max_retries': 5, 'num_concurrent': 8, 'timeout': 1800, 'tokenized_requests': False, 'max_length': 16384}
+2026-05-15:07:18:49 INFO     [models.api_models:172] Using max length 16384 - 1
+2026-05-15:07:18:49 INFO     [models.api_models:193] Using tokenizer None
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating train split:   0%|          | 0/7473 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 7473/7473 [00:00<00:00, 930228.04 examples/s]
+Generating test split:   0%|          | 0/1319 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1319/1319 [00:00<00:00, 787738.43 examples/s]
+2026-05-15:07:18:51 INFO     [tasks:700] Selected tasks:
+2026-05-15:07:18:51 INFO     [tasks:691] Task: gsm8k (gsm8k/gsm8k.yaml)
+2026-05-15:07:18:51 INFO     [evaluator:306] gsm8k: Using gen_kwargs: {'until': ['</s>', '<|im_end|>'], 'do_sample': False, 'temperature': 0, 'max_tokens': 12288, 'top_p': 1}
+2026-05-15:07:18:51 WARNING  [evaluator:481] Chat template formatting change affects loglikelihood and multiple-choice tasks. See docs/chat-template-readme.md for details.
+2026-05-15:07:18:51 INFO     [api.task:436] Building contexts for gsm8k on rank 0...
+  0%|          | 0/1319 [00:00<?, ?it/s]100%|██████████| 1319/1319 [00:01<00:00, 733.82it/s]
+2026-05-15:07:18:53 INFO     [evaluator:575] Running generate_until requests
+2026-05-15:07:18:53 INFO     [models.api_models:733] Tokenized requests are disabled. Context + generation length is not checked.
+Requesting API:   0%|          | 0/1319 [00:00<?, ?it/s]Requesting API:   0%|          | 1/1319 [04:00<87:53:32, 240.07s/it]Requesting API:   1%|          | 9/1319 [07:57<16:57:49, 46.62s/it] Requesting API:   2%|▏         | 23/1319 [08:20<5:29:36, 15.26s/it]Requesting API:   2%|▏         | 23/1319 [08:36<5:29:36, 15.26s/it]Requesting API:   2%|▏         | 24/1319 [11:50<10:09:17, 28.23s/it]Requesting API:   3%|▎         | 37/1319 [12:13<4:50:27, 13.59s/it] Requesting API:   3%|▎         | 37/1319 [12:26<4:50:27, 13.59s/it]Requesting API:   3%|▎         | 38/1319 [13:04<5:35:52, 15.73s/it]Requesting API:   3%|▎         | 39/1319 [15:20<8:49:06, 24.80s/it]Requesting API:   3%|▎         | 42/1319 [15:43<7:19:54, 20.67s/it]Requesting API:   3%|▎         | 42/1319 [15:56<7:19:54, 20.67s/it]Requesting API:   4%|▍         | 50/1319 [16:05<4:14:14, 12.02s/it]Requesting API:   4%|▍         | 50/1319 [16:16<4:14:14, 12.02s/it]Requesting API:   4%|▍         | 51/1319 [16:57<5:20:21, 15.16s/it]Requesting API:   4%|▍         | 53/1319 [19:12<8:44:40, 24.87s/it]Requesting API:   4%|▍         | 54/1319 [19:34<8:37:33, 24.55s/it]Requesting API:   5%|▍         | 62/1319 [19:57<4:14:29, 12.15s/it]Requesting API:   5%|▍         | 62/1319 [20:08<4:14:29, 12.15s/it]Requesting API:   5%|▍         | 63/1319 [20:50<5:32:57, 15.91s/it]Requesting API:   5%|▍         | 64/1319 [23:09<10:34:53, 30.35s/it]Requesting API:   5%|▍         | 65/1319 [23:35<10:18:43, 29.60s/it]Requesting API:   6%|▌         | 73/1319 [23:55<4:26:24, 12.83s/it] Requesting API:   6%|▌         | 73/1319 [24:06<4:26:24, 12.83s/it]Requesting API:   6%|▌         | 75/1319 [27:07<9:39:09, 27.93s/it]Requesting API:   6%|▌         | 77/1319 [27:32<8:32:39, 24.77s/it]Requesting API:   6%|▌         | 77/1319 [27:46<8:32:39, 24.77s/it]Requesting API:   7%|▋         | 87/1319 [27:52<3:50:25, 11.22s/it]Requesting API:   7%|▋         | 87/1319 [28:06<3:50:25, 11.22s/it]Requesting API:   7%|▋         | 89/1319 [30:59<7:55:16, 23.18s/it]Requesting API:   7%|▋         | 90/1319 [31:24<7:56:33, 23.27s/it]Requesting API:   7%|▋         | 97/1319 [31:44<4:32:56, 13.40s/it]Requesting API:   7%|▋         | 97/1319 [31:56<4:32:56, 13.40s/it]Requesting API:   8%|▊         | 99/1319 [34:49<8:58:41, 26.49s/it]Requesting API:   8%|▊         | 101/1319 [35:14<8:02:27, 23.77s/it]Requesting API:   8%|▊         | 101/1319 [35:26<8:02:27, 23.77s/it]Requesting API:   9%|▊         | 113/1319 [35:35<3:23:03, 10.10s/it]Requesting API:   9%|▊         | 113/1319 [35:46<3:23:03, 10.10s/it]Requesting API:   9%|▉         | 117/1319 [38:39<6:07:09, 18.33s/it]Requesting API:   9%|▉         | 120/1319 [39:05<5:27:46, 16.40s/it]Requesting API:   9%|▉         | 120/1319 [39:16<5:27:46, 16.40s/it]Requesting API:  10%|▉         | 127/1319 [39:27<3:41:57, 11.17s/it]Requesting API:  10%|▉         | 127/1319 [39:38<3:41:57, 11.17s/it]Requesting API:  10%|▉         | 130/1319 [41:05<5:04:52, 15.38s/it]Requesting API:  10%|█         | 132/1319 [42:31<6:29:36, 19.69s/it]Requesting API:  10%|█         | 133/1319 [42:56<6:38:36, 20.17s/it]Requesting API:  11%|█         | 140/1319 [43:18<3:48:28, 11.63s/it]Requesting API:  11%|█         | 140/1319 [43:28<3:48:28, 11.63s/it]Requesting API:  11%|█         | 141/1319 [44:57<6:28:41, 19.80s/it]Requesting API:  11%|█         | 143/1319 [46:24<8:04:22, 24.71s/it]Requesting API:  11%|█         | 144/1319 [46:48<8:03:54, 24.71s/it]Requesting API:  12%|█▏        | 157/1319 [47:12<2:44:20,  8.49s/it]Requesting API:  12%|█▏        | 157/1319 [47:26<2:44:20,  8.49s/it]Requesting API:  12%|█▏        | 158/1319 [48:56<4:58:31, 15.43s/it]Requesting API:  12%|█▏        | 161/1319 [50:20<5:54:38, 18.38s/it]Requesting API:  12%|█▏        | 162/1319 [50:47<6:11:47, 19.28s/it]Requesting API:  13%|█▎        | 172/1319 [51:08<2:54:33,  9.13s/it]Requesting API:  13%|█▎        | 172/1319 [51:26<2:54:33,  9.13s/it]Requesting API:  13%|█▎        | 173/1319 [51:39<3:26:50, 10.83s/it]

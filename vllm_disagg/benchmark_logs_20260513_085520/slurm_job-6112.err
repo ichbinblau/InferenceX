@@ -1,0 +1,93 @@
+Unable to find image 'aigmkt/vllm-dev:ainic6' locally
+ainic6: Pulling from aigmkt/vllm-dev
+ad1a9d392ffd: Already exists
+41b585b74eb7: Already exists
+6e2f8b9a9ee9: Already exists
+924b9d2df025: Already exists
+678f1e6022b3: Already exists
+4f4fb700ef54: Already exists
+617221c9a7af: Already exists
+a53173c1c808: Already exists
+b1294942f333: Already exists
+2d7f31ac40ab: Already exists
+8a37cd0cea20: Already exists
+ab23dd4d648e: Already exists
+416e23c20669: Already exists
+7964a65b4b13: Pulling fs layer
+79faad8b807f: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+3b56ac9bdebb: Pulling fs layer
+5382215637f7: Pulling fs layer
+d2020f40d9c8: Pulling fs layer
+7754b470d618: Pulling fs layer
+bccdfc5c89b9: Pulling fs layer
+ffedd055414f: Pulling fs layer
+be86a26447dd: Pulling fs layer
+3b56ac9bdebb: Waiting
+a0573ad67770: Pulling fs layer
+868c1647657f: Pulling fs layer
+5382215637f7: Waiting
+7b360d59f116: Pulling fs layer
+4041bfdf4e98: Pulling fs layer
+d2020f40d9c8: Waiting
+bccdfc5c89b9: Waiting
+be145d6da2e5: Pulling fs layer
+7754b470d618: Waiting
+ffedd055414f: Waiting
+be86a26447dd: Waiting
+be145d6da2e5: Waiting
+a0573ad67770: Waiting
+7b360d59f116: Waiting
+4041bfdf4e98: Waiting
+868c1647657f: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+79faad8b807f: Verifying Checksum
+79faad8b807f: Download complete
+3b56ac9bdebb: Verifying Checksum
+3b56ac9bdebb: Download complete
+5382215637f7: Verifying Checksum
+5382215637f7: Download complete
+d2020f40d9c8: Verifying Checksum
+d2020f40d9c8: Download complete
+7754b470d618: Verifying Checksum
+7754b470d618: Download complete
+bccdfc5c89b9: Verifying Checksum
+bccdfc5c89b9: Download complete
+be86a26447dd: Download complete
+a0573ad67770: Verifying Checksum
+a0573ad67770: Download complete
+868c1647657f: Verifying Checksum
+868c1647657f: Download complete
+7b360d59f116: Verifying Checksum
+7b360d59f116: Download complete
+4041bfdf4e98: Verifying Checksum
+4041bfdf4e98: Download complete
+7964a65b4b13: Download complete
+be145d6da2e5: Verifying Checksum
+be145d6da2e5: Download complete
+7964a65b4b13: Pull complete
+79faad8b807f: Pull complete
+4f4fb700ef54: Pull complete
+3b56ac9bdebb: Pull complete
+5382215637f7: Pull complete
+d2020f40d9c8: Pull complete
+7754b470d618: Pull complete
+bccdfc5c89b9: Pull complete
+ffedd055414f: Verifying Checksum
+ffedd055414f: Download complete
+ffedd055414f: Pull complete
+be86a26447dd: Pull complete
+a0573ad67770: Pull complete
+868c1647657f: Pull complete
+7b360d59f116: Pull complete
+4041bfdf4e98: Pull complete
+be145d6da2e5: Pull complete
+Digest: sha256:6c149983015974ee77f8c58a4766a700aa1d357638cd8499d288caa53cf8dd94
+Status: Downloaded newer image for aigmkt/vllm-dev:ainic6
+srun: forcing job termination
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 6112.9 ON mia1-p01-g06 CANCELLED AT 2026-05-13T09:16:20 ***
+srun: error: mia1-p01-g06: task 0: Killed
+srun: Terminating StepId=6112.9
+srun: error: mia1-p01-g07: task 1: Killed

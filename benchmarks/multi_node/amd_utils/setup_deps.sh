@@ -44,18 +44,52 @@ git_clone_retry() {
 install_recipe_deps() {
     if command -v ibv_devinfo >/dev/null 2>&1 && command -v ip >/dev/null 2>&1; then
         echo "[SETUP] Container RDMA/net tools already present"
+    else
+        echo "[SETUP] Installing ibv_devinfo + iproute2 in container..."
+        apt-get update -q -y && apt-get install -q -y \
+            ibverbs-utils iproute2 \
+            && rm -rf /var/lib/apt/lists/*
+
+        if ! command -v ibv_devinfo >/dev/null 2>&1 || ! command -v ip >/dev/null 2>&1; then
+            echo "[SETUP] ERROR: Failed to install ibv_devinfo/iproute2"; exit 1
+        fi
+        _SETUP_INSTALLED+=("ibverbs-utils+iproute2")
+    fi
+
+    install_ionic_rdma_provider
+}
+
+# ---------------------------------------------------------------------------
+# 5b. AMD Pollara/AINIC "ionic" RDMA userspace provider (libionic)
+#     The stock vLLM ROCm image ships rdma-core providers but NOT libionic,
+#     so libibverbs (and MoRIIO's RdmaManager) enumerate 0 RDMA devices and
+#     mori aborts with: Assertion `availDevices.size() > 0' failed.
+#     Install the provider from the AINIC deb repo bind-mounted at
+#     AINIC_DEB_REPO (default /opt/ainic-repo) when the NICs aren't visible.
+# ---------------------------------------------------------------------------
+install_ionic_rdma_provider() {
+    local repo="${AINIC_DEB_REPO:-/opt/ainic-repo}"
+
+    if command -v ibv_devinfo >/dev/null 2>&1 && \
+       [[ "$(ibv_devinfo 2>/dev/null | grep -c hca_id)" -gt 0 ]]; then
+        echo "[SETUP] RDMA devices already visible; skipping ionic provider install"
         return 0
     fi
 
-    echo "[SETUP] Installing ibv_devinfo + iproute2 in container..."
-    apt-get update -q -y && apt-get install -q -y \
-        ibverbs-utils iproute2 \
-        && rm -rf /var/lib/apt/lists/*
-
-    if ! command -v ibv_devinfo >/dev/null 2>&1 || ! command -v ip >/dev/null 2>&1; then
-        echo "[SETUP] ERROR: Failed to install ibv_devinfo/iproute2"; exit 1
+    local deb
+    deb=$(ls -1 "$repo"/libionic1_*.deb 2>/dev/null | head -1)
+    if [[ -z "$deb" ]]; then
+        echo "[SETUP] WARNING: ionic provider deb not found under $repo (RDMA NICs may be invisible)"
+        return 0
     fi
-    _SETUP_INSTALLED+=("ibverbs-utils+iproute2")
+
+    echo "[SETUP] Installing AINIC ionic RDMA provider: $deb"
+    dpkg -i "$deb" || apt-get install -y -f
+
+    local n
+    n=$(ibv_devinfo 2>/dev/null | grep -c hca_id)
+    echo "[SETUP] RDMA devices visible after ionic provider install: $n"
+    _SETUP_INSTALLED+=("libionic-rdma-provider")
 }
 
 # ---------------------------------------------------------------------------

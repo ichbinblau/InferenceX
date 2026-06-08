@@ -1,0 +1,602 @@
+[DISPATCHER] ENGINE=vllm-disagg  WS_PATH=/workspace/benchmarks/multi_node/amd_utils
+[SETUP] Installing ibv_devinfo + iproute2 in container...
+Get:1 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy InRelease [2321 B]
+Get:2 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy InRelease [3185 B]
+Get:3 https://repo.radeon.com/rocm/apt/7.2.2 jammy InRelease [2605 B]
+Get:4 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+Get:5 https://repo.radeon.com/amdainic/pensando/ubuntu/1.117.3-hydra jammy/main amd64 Packages [3369 B]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:8 https://repo.radeon.com/amdgpu/30.30.1/ubuntu jammy/main amd64 Packages [1332 B]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:10 https://repo.radeon.com/rocm/apt/7.2.2 jammy/main amd64 Packages [71.3 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+Get:15 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy InRelease [2367 B]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4286 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1602 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [86.0 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7341 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+Get:22 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7004 kB]
+Get:23 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1295 kB]
+Get:24 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3915 kB]
+Get:25 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [61.6 kB]
+Get:26 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:27 https://packages.broadcom.com/artifactory/ethernet-nic-debian-public jammy/main amd64 Packages [799 B]
+Get:28 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main amd64 Packages [38.9 kB]
+Fetched 46.2 MB in 1s (36.4 MB/s)
+Reading package lists...
+W: https://repo.radeon.com/amdgpu/30.30.1/ubuntu/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.radeon.com/rocm/apt/7.2.2/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libatm1 libbpf0 libmnl0 libxtables12
+Suggested packages:
+  iproute2-doc
+The following NEW packages will be installed:
+  ibverbs-utils iproute2 libatm1 libbpf0 libmnl0 libxtables12
+0 upgraded, 6 newly installed, 0 to remove and 7 not upgraded.
+Need to get 1337 kB of archives.
+After this operation, 3876 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libbpf0 amd64 1:0.5.0-1ubuntu22.04.1 [140 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmnl0 amd64 1.0.4-3build2 [13.2 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxtables12 amd64 1.8.7-1ubuntu5.2 [31.3 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 iproute2 amd64 5.15.0-1ubuntu2.1 [1072 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 libatm1 amd64 1:2.5.1-4build2 [22.8 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/universe amd64 ibverbs-utils amd64 39.0-1 [57.3 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 1337 kB in 0s (21.8 MB/s)
+Selecting previously unselected package libbpf0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 69270 files and directories currently installed.)
+Preparing to unpack .../0-libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../1-libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../2-libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Selecting previously unselected package iproute2.
+Preparing to unpack .../3-iproute2_5.15.0-1ubuntu2.1_amd64.deb ...
+Unpacking iproute2 (5.15.0-1ubuntu2.1) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../4-libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Selecting previously unselected package ibverbs-utils.
+Preparing to unpack .../5-ibverbs-utils_39.0-1_amd64.deb ...
+Unpacking ibverbs-utils (39.0-1) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up ibverbs-utils (39.0-1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+[SETUP] amd-quark already present
+[SETUP] Patched: layer.py
+INFO 05-15 08:52:56 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 08:53:08 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched save_kv_layer: null guard + timeout + sleep
+INFO 05-15 08:53:11 [moriio_engine.py:54] MoRIIO is available
+[SETUP] Patched: transfer timeout + writer error handling
+INFO 05-15 08:53:15 [moriio_engine.py:54] MoRIIO is available
+INFO 05-15 08:53:15 [moriio_connector.py:80] MoRIIO is available
+[SETUP] Patched start_load_kv busy-spin with timeout + sleep
+[SETUP] Patched: scheduler _update_from_kv_xfer_finished read-mode fix
+[SETUP] Patched: idle KV block reaper for prefill
+[SETUP] Patched minimax_m2.py: /workspace/benchmarks/multi_node/amd_utils/patches/minimax_m2.py -> /usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/minimax_m2.py
+[SETUP] Installed: ibverbs-utils+iproute2 MoRI-FP8-patch MoRIIO-save-kv-timeout-patch MoRIIO-transfer-timeout-patch MoRIIO-load-kv-timeout-patch scheduler-read-mode-fix idle-kv-reaper minimax-m2-wideep-mori in 53s
++++ ENGINE=vllm-disagg
++++ export PYTHONDONTWRITEBYTECODE=1
++++ PYTHONDONTWRITEBYTECODE=1
++++ [[ -z '' ]]
+++++ grep hca_id:
+++++ ibv_devinfo
+++++ awk '{print $2}'
+++++ paste -sd,
++++ DETECTED=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ [[ -n rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 ]]
++++ export IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
++++ IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5
+++++ hostname -s
++++ echo '[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06'
+[INFO] Auto-detected IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5 from hostname mia1-p01-g06
++++ export IBDEVICES
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export GLOO_SOCKET_IFNAME=eno0
++++ GLOO_SOCKET_IFNAME=eno0
++++ [[ -z '' ]]
+++++ ip route
+++++ grep '^default'
+++++ awk '{print $5}'
+++++ head -n 1
++++ export NCCL_SOCKET_IFNAME=eno0
++++ NCCL_SOCKET_IFNAME=eno0
++++ set +x
++++ [[ -z '' ]]
+++++ ip -o link show
+++++ awk '-F: ' '/tw-eth/{print $2}'
+++++ head -1
++++ UCX_NET_DEV=tw-eth3
++++ [[ -n tw-eth3 ]]
++++ export UCX_NET_DEVICES=tw-eth3
++++ UCX_NET_DEVICES=tw-eth3
++++ echo '[INFO] Auto-set UCX_NET_DEVICES=tw-eth3'
+[INFO] Auto-set UCX_NET_DEVICES=tw-eth3
++++ export UCX_IB_GID_INDEX=1
++++ UCX_IB_GID_INDEX=1
++++ [[ -n '' ]]
++++ command -v nicctl
+++++ nicctl show qos
+++++ awk '/PFC no-drop priorities/ {print $NF; exit}'
++++ ND_PRIO=3
+++++ nicctl show qos
+++++ awk -v p=3 '
+$1 == "DSCP" && $2 == ":" && $NF == p {
+    print $3; exit
+}'
++++ ND_DSCP=26
++++ [[ -n 26 ]]
++++ [[ -n 3 ]]
++++ export UCX_IB_TRAFFIC_CLASS=104
++++ UCX_IB_TRAFFIC_CLASS=104
++++ export UCX_IB_SL=3
++++ UCX_IB_SL=3
++++ echo '[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3'
+[INFO] Detected QoS from nicctl: UCX_IB_TRAFFIC_CLASS=104, UCX_IB_SL=3
++++ set +x
+[INFO] IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5  UCX_NET_DEVICES=tw-eth3  NCCL_SOCKET_IFNAME=eno0  UCX_IB_GID_INDEX=1  UCX_IB_TRAFFIC_CLASS=104
+[INFO] Management IP (barriers/proxy): 10.24.112.182
+[INFO] RDMA IP (Nixl KV transfer): 10.24.112.182
+[PATCH] Added ucx_error_handling_mode=none to /usr/local/lib/python3.12/dist-packages/rixl/_api.py (IBDEVICES=rdma3,rdma0,rdma2,rdma1,rdma7,rdma4,rdma6,rdma5)
+Loaded model configuration for: Kimi-K2.5-MXFP4
+PREFILL_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+DECODE_SERVER_CONFIG (after TP/EP/DP): --tensor-parallel-size 8 --enable-expert-parallel --all2all-backend mori --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Waiting at the container creation barrier on mia1-p01-g06
+Port 5000 is now open on 10.24.112.182.
+Port 5000 has been closed on 10.24.112.182.
+Prefill node IPs: 10.24.112.182 
+Decode  node IPs: 10.24.112.183 
+NODE INFO =======================================
+================================================
+Node List : mia1-p01-g06,mia1-p01-g07
+Node IPs  : 10.24.112.182,10.24.112.183
+Model     : Kimi-K2.5-MXFP4
+================================================
+CLUSTER INFO ====================================
+================================================
+mia1-p01-g06:10.24.112.182 is Proxy Node and Prefill Node
+Using prefill config: --tensor-parallel-size 8 --compilation-config '{"cudagraph_mode":"PIECEWISE"}' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data
+Prefill servers: 10.24.112.182 
+Decode  servers: 10.24.112.183 
+================================================
+Using external vllm-router container (started by job.slurm on this node)
+++ set +x
+Waiting for all prefill and decode servers to be up . . .
+++ eval 'vllm serve /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc         --served-model-name Kimi-K2.5-MXFP4         --port 2584         --trust-remote-code         --kv-transfer-config '\''{"kv_connector": "MoRIIOConnector", "kv_role": "kv_producer", "kv_connector_extra_config": {"proxy_ip": "10.24.112.182", "proxy_ping_port": "36367", "http_port": "2584"}}'\''         --tensor-parallel-size 8 --compilation-config '\''{"cudagraph_mode":"PIECEWISE"}'\'' --no-enable-prefix-caching --block-size 1 --gpu-memory-utilization 0.90 --mm-encoder-tp-mode data'
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1800s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1795s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1790s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1785s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1780s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1775s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1770s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1765s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1760s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1755s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1750s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1745s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1740s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1735s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1730s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1725s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1720s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1715s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1710s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1705s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1700s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1695s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1690s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1685s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1680s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1675s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1670s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1665s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1660s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1655s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1650s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1645s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1640s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1635s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1630s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1625s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1620s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1615s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1610s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1605s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1600s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1595s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1590s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1585s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1580s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1575s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1570s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1565s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1560s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1555s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1550s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1545s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1540s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1535s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1530s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1525s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1520s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1515s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1510s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1505s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1500s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1495s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1490s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1485s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1480s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1475s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1470s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1465s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1460s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1455s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1450s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1445s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1440s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1435s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1430s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1425s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1420s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1415s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1410s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1405s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1400s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1395s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1390s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1385s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1380s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1375s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1370s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1365s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1360s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1355s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1350s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1345s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1340s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1335s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1330s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1325s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1320s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1315s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1310s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1305s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1300s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1295s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1290s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1285s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1280s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1275s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1270s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1265s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1260s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1255s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1250s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1245s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1240s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1235s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1230s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1225s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1220s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1215s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1210s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1205s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1200s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1195s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1190s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1185s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1180s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1175s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1170s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1165s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1160s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1155s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1150s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1145s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1140s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1135s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1130s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1125s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1120s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1115s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1110s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1105s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1100s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1095s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1090s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1085s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1080s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1075s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1070s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1065s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1060s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1055s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1050s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1045s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1040s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1035s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1030s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1025s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1020s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1015s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1010s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1005s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (1000s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (995s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (990s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (985s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (980s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (975s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (970s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (965s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (960s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (955s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (950s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (945s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (940s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (935s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (930s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (925s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (920s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (915s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (910s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (905s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (900s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (895s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (890s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (885s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (880s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (875s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (870s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (865s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (860s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (855s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (850s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (845s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (840s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (835s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (830s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (825s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (820s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (815s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (810s remaining)
+Waiting for nodes.[2584, 2584],['10.24.112.182', '10.24.112.183'] . . (805s remaining)
+Congratulations!!! All prefill and decode servers are up . . .
+Router is ready for benchmarking
+Ready for benchmarking on mia1-p01-g06:10.24.112.182
+Benchmarking on mia1-p01-g06:10.24.112.182
+++ eval 'bash /workspace/benchmarks/multi_node/amd_utils/bench.sh 1 1 8 8         /models Kimi-K2.5-MXFP4 /run_logs/slurm_job-6228 1024         1024 "8" inf         0.8 10'
++++ bash /workspace/benchmarks/multi_node/amd_utils/bench.sh 1 1 8 8 /models Kimi-K2.5-MXFP4 /run_logs/slurm_job-6228 1024 1024 8 inf 0.8 10
+Config 1024; 1024; 8; inf
+profile_folder: /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024
+max_concurrency: 8
+chosen_req_rate: inf
+MODEL_PATH: /models/models--amd--Kimi-K2.5-MXFP4/snapshots/a717d434531121079eef3dc0be9d0315d8960bcc
+ROUTER_PORT: 30000
+chosen_isl: 1024
+chosen_osl: 1024
+num_prompts: 80
+export_file: /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8
++ [[ -n '' ]]
++ python3 /workspace/utils/bench_serving/benchmark_serving.py --model Kimi-K2.5-MXFP4 --backend openai --base-url http://0.0.0.0:30000 --dataset-name random --random-input-len 1024 --random-output-len 1024 --random-range-ratio 0.8 --num-prompts 80 --max-concurrency 8 --request-rate inf --ignore-eos --save-result --num-warmups 16 --percentile-metrics ttft,tpot,itl,e2el --result-dir /workspace/ --result-filename /run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8.json --trust-remote-code
+/workspace/utils/bench_serving/benchmark_serving.py:49: DeprecationWarning: `vllm.transformers_utils.tokenizer.get_tokenizer` has been moved to `vllm.tokenizers.get_tokenizer`. The old name will be removed in a future version.
+  from vllm.transformers_utils.tokenizer import get_tokenizer
+Namespace(backend='openai', base_url='http://0.0.0.0:30000', host='127.0.0.1', port=8000, endpoint='/v1/completions', dataset_name='random', dataset_path=None, max_concurrency=8, model='Kimi-K2.5-MXFP4', tokenizer=None, best_of=1, use_beam_search=False, num_prompts=80, logprobs=None, request_rate=inf, burstiness=1.0, seed=0, trust_remote_code=True, disable_tqdm=False, profile=False, save_result=True, save_detailed=False, metadata=None, result_dir='/workspace/', result_filename='/run_logs/slurm_job-6228/vllm-disagg_isl_1024_osl_1024/concurrency_8_req_rate_inf_gpus_16_ctx_8_gen_8.json', ignore_eos=True, percentile_metrics='ttft,tpot,itl,e2el', metric_percentiles='90,99,99.9', goodput=None, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=1024, random_range_ratio=0.8, random_prefix_len=0, use_chat_template=False, random_num_workers=0, dsv4=False, hf_subset=None, hf_split=None, hf_output_len=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None, num_warmups=16)
+ERROR 05-15 09:15:17 [repo_utils.py:47] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e425-177ae12056453dac0a79720c;b995358f-aef1-4ae6-b805-a174e89adb21)
+ERROR 05-15 09:15:17 [repo_utils.py:47] 
+ERROR 05-15 09:15:17 [repo_utils.py:47] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:17 [repo_utils.py:47] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:17 [repo_utils.py:47] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:17 [repo_utils.py:47] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:17 [repo_utils.py:47] Invalid username or password., retrying 1 of 2
+ERROR 05-15 09:15:19 [repo_utils.py:45] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e427-76d22e5c06f955cc0489fdd6;8e64380a-108b-4728-9c99-4fce51cea010)
+ERROR 05-15 09:15:19 [repo_utils.py:45] 
+ERROR 05-15 09:15:19 [repo_utils.py:45] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:19 [repo_utils.py:45] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:19 [repo_utils.py:45] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:19 [repo_utils.py:45] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:19 [repo_utils.py:45] Invalid username or password.
+ERROR 05-15 09:15:19 [repo_utils.py:110] Error retrieving file list. Please ensure your `model_name_or_path``repo_type`, `token` and `revision` arguments are correctly set. Returning an empty list.
+ERROR 05-15 09:15:19 [repo_utils.py:47] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e427-656466cd104eebb6500050fc;c21293a9-59ef-401f-80bf-be4408629562)
+ERROR 05-15 09:15:19 [repo_utils.py:47] 
+ERROR 05-15 09:15:19 [repo_utils.py:47] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:19 [repo_utils.py:47] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:19 [repo_utils.py:47] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:19 [repo_utils.py:47] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:19 [repo_utils.py:47] Invalid username or password., retrying 1 of 2
+ERROR 05-15 09:15:21 [repo_utils.py:45] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e429-644ea77c456eb92d48b981c0;f4841c0c-5ffb-47f2-9eb4-5db62f57f7e4)
+ERROR 05-15 09:15:21 [repo_utils.py:45] 
+ERROR 05-15 09:15:21 [repo_utils.py:45] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:21 [repo_utils.py:45] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:21 [repo_utils.py:45] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:21 [repo_utils.py:45] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:21 [repo_utils.py:45] Invalid username or password.
+ERROR 05-15 09:15:21 [repo_utils.py:110] Error retrieving file list. Please ensure your `model_name_or_path``repo_type`, `token` and `revision` arguments are correctly set. Returning an empty list.
+ERROR 05-15 09:15:21 [repo_utils.py:47] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e429-23f6fc63423a82bc1c6e4b8f;e7767c3f-0772-4c0f-ac15-1723b704c356)
+ERROR 05-15 09:15:21 [repo_utils.py:47] 
+ERROR 05-15 09:15:21 [repo_utils.py:47] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:21 [repo_utils.py:47] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:21 [repo_utils.py:47] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:21 [repo_utils.py:47] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:21 [repo_utils.py:47] Invalid username or password., retrying 1 of 2
+ERROR 05-15 09:15:23 [repo_utils.py:45] Error retrieving file list: 401 Client Error. (Request ID: Root=1-6a06e42b-3ea780a54da7d18207f757be;fdeb4a52-7880-4167-9212-bc388d0f7877)
+ERROR 05-15 09:15:23 [repo_utils.py:45] 
+ERROR 05-15 09:15:23 [repo_utils.py:45] Repository Not Found for url: https://huggingface.co/api/models/Kimi-K2.5-MXFP4/tree/main?recursive=true&expand=false.
+ERROR 05-15 09:15:23 [repo_utils.py:45] Please make sure you specified the correct `repo_id` and `repo_type`.
+ERROR 05-15 09:15:23 [repo_utils.py:45] If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+ERROR 05-15 09:15:23 [repo_utils.py:45] For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+ERROR 05-15 09:15:23 [repo_utils.py:45] Invalid username or password.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 761, in hf_raise_for_status
+    response.raise_for_status()
+  File "/usr/local/lib/python3.12/dist-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/Kimi-K2.5-MXFP4/resolve/main/config.json'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 997, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1148, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1782, in _raise_on_head_call_error
+    raise head_call_error
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1669, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1591, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 692, in _httpx_follow_relative_redirects_with_backoff
+    hf_raise_for_status(response)
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 835, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response, repo_type=repo_type, repo_id=repo_id) from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6a06e42c-0637a05746db950651681682;3bb1cbd5-a09c-44b4-9e3b-b0faf32c7514)
+
+Repository Not Found for url: https://huggingface.co/Kimi-K2.5-MXFP4/resolve/main/config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/transformers/models/auto/tokenization_auto.py", line 692, in from_pretrained
+    config = AutoConfig.from_pretrained(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/models/auto/configuration_auto.py", line 374, in from_pretrained
+    config_dict, unused_kwargs = PreTrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/configuration_utils.py", line 682, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/configuration_utils.py", line 737, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 454, in cached_files
+    raise OSError(
+OSError: Kimi-K2.5-MXFP4 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 761, in hf_raise_for_status
+    response.raise_for_status()
+  File "/usr/local/lib/python3.12/dist-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/Kimi-K2.5-MXFP4/resolve/main/config.json'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 422, in cached_files
+    hf_hub_download(
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 997, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1148, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1782, in _raise_on_head_call_error
+    raise head_call_error
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1669, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/file_download.py", line 1591, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 692, in _httpx_follow_relative_redirects_with_backoff
+    hf_raise_for_status(response)
+  File "/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_http.py", line 835, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response, repo_type=repo_type, repo_id=repo_id) from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6a06e42c-37a3c68a48d119e55946f197;05379821-c87e-4301-b61b-cb02aa0f2679)
+
+Repository Not Found for url: https://huggingface.co/Kimi-K2.5-MXFP4/resolve/main/config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.
+For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/utils/bench_serving/benchmark_serving.py", line 1228, in <module>
+    main(args)
+  File "/workspace/utils/bench_serving/benchmark_serving.py", line 786, in main
+    tokenizer = get_tokenizer(tokenizer_id,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/tokenizers/registry.py", line 245, in get_tokenizer
+    tokenizer = tokenizer_cls_.from_pretrained(tokenizer_name, *args, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/vllm/tokenizers/hf.py", line 172, in from_pretrained
+    tokenizer = AutoTokenizer.from_pretrained(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/models/auto/tokenization_auto.py", line 696, in from_pretrained
+    config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/configuration_utils.py", line 641, in from_pretrained
+    config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/configuration_utils.py", line 682, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/configuration_utils.py", line 737, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 278, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/transformers/utils/hub.py", line 454, in cached_files
+    raise OSError(
+OSError: Kimi-K2.5-MXFP4 is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
++ local benchmark_exit_code=1
++ set +x
+-----------------------------------------
+[BENCH] Cooldown: waiting 10s for idle KV block reaper...
+++ set +x
