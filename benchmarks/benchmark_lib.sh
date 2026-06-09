@@ -927,6 +927,10 @@ resolve_trace_source() {
     # unfiltered 052726 corpus and switches to the 256k-capped variant).
     local loader="${WEKA_LOADER_OVERRIDE:-semianalysis_cc_traces_weka_with_subagents}"
     local dataset
+    # Loader CLI flag; the pinned aliases use their own --public-dataset name,
+    # while newer corpora without a pinned alias go through the generic weka_hf
+    # loader + --hf-weka-repo (the branch sets loader_flag explicitly).
+    local loader_flag=""
     case "$loader" in
         semianalysis_cc_traces_weka_with_subagents)
             dataset="semianalysisai/cc-traces-weka-with-subagents-052726"
@@ -934,13 +938,40 @@ resolve_trace_source() {
         semianalysis_cc_traces_weka_with_subagents_256k)
             dataset="semianalysisai/cc-traces-weka-with-subagents-052726-256k"
             ;;
+        semianalysis_cc_traces_weka_with_subagents_060226)
+            # No pinned aiperf --public-dataset enum value for the 060226 corpus;
+            # load it via the generic weka_hf loader pointed at the HF repo.
+            dataset="semianalysisai/cc-traces-weka-with-subagents-060226"
+            loader_flag="--public-dataset weka_hf --hf-weka-repo $dataset"
+            # The inferencex-agentx-mvp scenario pins weka_hf to the 052726 repo;
+            # any other repo requires --unsafe-override to downgrade to a warning.
+            AIPERF_UNSAFE_OVERRIDE=true
+            ;;
+        semianalysis_cc_traces_weka_with_subagents_060226_256k)
+            dataset="semianalysisai/cc-traces-weka-with-subagents-060226-256k"
+            loader_flag="--public-dataset weka_hf --hf-weka-repo $dataset"
+            AIPERF_UNSAFE_OVERRIDE=true
+            ;;
+        semianalysis_cc_traces_weka_with_subagents_060826)
+            # No pinned aiperf --public-dataset enum value for the 060826 corpus;
+            # load it via the generic weka_hf loader pointed at the HF repo.
+            dataset="semianalysisai/cc-traces-weka-with-subagents-060826"
+            loader_flag="--public-dataset weka_hf --hf-weka-repo $dataset"
+            AIPERF_UNSAFE_OVERRIDE=true
+            ;;
+        semianalysis_cc_traces_weka_with_subagents_060826_256k)
+            dataset="semianalysisai/cc-traces-weka-with-subagents-060826-256k"
+            loader_flag="--public-dataset weka_hf --hf-weka-repo $dataset"
+            AIPERF_UNSAFE_OVERRIDE=true
+            ;;
         *)
-            echo "Error: unknown WEKA_LOADER_OVERRIDE='$loader'. Allowed: semianalysis_cc_traces_weka_with_subagents, semianalysis_cc_traces_weka_with_subagents_256k" >&2
+            echo "Error: unknown WEKA_LOADER_OVERRIDE='$loader'. Allowed: semianalysis_cc_traces_weka_with_subagents, semianalysis_cc_traces_weka_with_subagents_256k, semianalysis_cc_traces_weka_with_subagents_060226, semianalysis_cc_traces_weka_with_subagents_060226_256k, semianalysis_cc_traces_weka_with_subagents_060826, semianalysis_cc_traces_weka_with_subagents_060826_256k" >&2
             exit 1
             ;;
     esac
-    TRACE_SOURCE_FLAG="--public-dataset $loader"
-    echo "Loading traces via aiperf public-dataset: $loader ($dataset)"
+    [[ -z "$loader_flag" ]] && loader_flag="--public-dataset $loader"
+    TRACE_SOURCE_FLAG="$loader_flag"
+    echo "Loading traces via aiperf: $TRACE_SOURCE_FLAG ($dataset)"
     # Pre-download the dataset into the shared HF_HUB_CACHE (same mount used
     # for model weights) so subsequent runs read from cache instead of
     # re-downloading every job.

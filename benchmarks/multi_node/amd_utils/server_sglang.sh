@@ -396,6 +396,15 @@ build_server_config() {
 PREFILL_SERVER_CONFIG=$(build_server_config "prefill" "$MODEL_NAME" "$PREFILL_TP_SIZE" "$PREFILL_ENABLE_EP" "$PREFILL_ENABLE_DP" "$DECODE_MTP_SIZE")
 DECODE_SERVER_CONFIG=$(build_server_config "decode" "$MODEL_NAME" "$DECODE_TP_SIZE" "$DECODE_ENABLE_EP" "$DECODE_ENABLE_DP" "$DECODE_MTP_SIZE")
 
+# Disable the custom all-reduce kernel on both prefill and decode servers.
+# Appended idempotently so a model whose base_flags already carry it is untouched.
+if [[ "$PREFILL_SERVER_CONFIG" != *"--disable-custom-all-reduce"* ]]; then
+    PREFILL_SERVER_CONFIG="$PREFILL_SERVER_CONFIG --disable-custom-all-reduce"
+fi
+if [[ "$DECODE_SERVER_CONFIG" != *"--disable-custom-all-reduce"* ]]; then
+    DECODE_SERVER_CONFIG="$DECODE_SERVER_CONFIG --disable-custom-all-reduce"
+fi
+
 if [[ -n "$MODEL_NAME" ]]; then
     echo "Using model-specific configuration for: $MODEL_NAME"
 fi

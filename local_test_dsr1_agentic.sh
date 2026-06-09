@@ -22,7 +22,7 @@ set -euo pipefail
 export SLURM_ACCOUNT="$USER"
 export SLURM_PARTITION="compute"
 export TIME_LIMIT="08:00:00"
-export SLURM_REUSE_JOBID="8334"
+export SLURM_REUSE_JOBID="8429"
 
 # ── Model ──
 export MODEL_PATH="/it-share/hf_cache"
@@ -60,7 +60,7 @@ export RESULT_FILENAME="${RUNNER_NAME}"
 # BENCH_MAX_CONCURRENCY, which bench.sh splits (on 'x') into loop iterations.
 export DURATION="${DURATION:-1800}"
 # conc-list from amd-master.yaml: [ 1, 2, 4, 8 ] (delimited by 'x')
-CONC="${CONC:-8x16x32x64}"
+CONC="${CONC:-1x2x4x8x16x32}"
 
 # Keep the prefill/decode/router containers running after the benchmark
 # finishes (skips job.slurm teardown). Set to 1 to inspect or reuse the
@@ -145,7 +145,7 @@ export DECODE_RADIX_CACHE="${DECODE_RADIX_CACHE:-1}"
 # affinity (radix-tree approximation in the router). Threads through job.slurm
 # into server_sglang.sh's sglang_router.launch_router (--policy/--decode-policy).
 # Needs >1 decode worker + decode radix cache (DECODE_RADIX_CACHE=1 above) to help.
-export ROUTER_POLICY="${ROUTER_POLICY:-cache_aware}"
+export ROUTER_POLICY="${ROUTER_POLICY:-random}"
 
 # ── Topology (from amd-master.yaml dsr1-fp4-mi355x-sglang-disagg, 1P1D TP8) ──
 PREFILL_NODES=1
@@ -162,8 +162,8 @@ REQUEST_RATE="inf"
 #   Decode:  TP=8, EP=1 (no EP), no DP-attn, MTP=0
 PREFILL_ENABLE_EP=false
 PREFILL_ENABLE_DP=false
-DECODE_ENABLE_EP=true
-DECODE_ENABLE_DP=true
+DECODE_ENABLE_EP=false
+DECODE_ENABLE_DP=false
 export DECODE_MTP_SIZE=0
 
 PREFILL_TP=8
@@ -179,4 +179,5 @@ bash ./submit.sh \
     "$PREFILL_ENABLE_EP" "$PREFILL_ENABLE_DP" \
     "$DECODE_ENABLE_EP"  "$DECODE_ENABLE_DP" \
     "$PREFILL_TP" "$DECODE_TP" \
-    "$RANDOM_RANGE_RATIO"
+    "$RANDOM_RANGE_RATIO" \
+    "mia1-p01-g05,mia1-p01-g07"

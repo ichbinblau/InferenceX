@@ -98,6 +98,24 @@ def median_intvty(record: dict) -> float | None:
     return None
 
 
+def intvty_value(record: dict, prefer: str = "mean") -> float | None:
+    """Interactivity (tok/s/user) using either mean or median as the primary key.
+
+    The mean is heavily skewed by short/single-token outlier requests in agentic
+    replay (std can dwarf the mean), so ``--x-metric median`` gives a far more
+    representative interactivity for the Pareto x-axis.
+    """
+    if prefer == "median":
+        keys = ("median_intvty", "p50_intvty", "mean_intvty")
+    else:
+        keys = ("mean_intvty", "median_intvty", "p50_intvty")
+    for key in keys:
+        val = record.get(key)
+        if val is not None:
+            return float(val)
+    return None
+
+
 def enrich_median_intvty_from_aiperf(
     records: list[dict],
     artifacts_root: Path | None,
@@ -173,11 +191,13 @@ def compute_pareto_frontier(
     return is_optimal
 
 
-def plot_pareto_panel(ax, series_data: dict[str, list[dict]], title: str) -> None:
+def plot_pareto_panel(
+    ax, series_data: dict[str, list[dict]], title: str, *, x_metric: str = "mean"
+) -> None:
     for idx, (series_name, points) in enumerate(sorted(series_data.items())):
         style = SERIES_STYLES[idx % len(SERIES_STYLES)]
         points = sorted(points, key=lambda r: r["conc"])
-        xs = np.array([median_intvty(r) for r in points], dtype=float)
+        xs = np.array([intvty_value(r, x_metric) for r in points], dtype=float)
         ys = np.array([float(r["tput_per_gpu"]) for r in points], dtype=float)
         concs = [r["conc"] for r in points]
 
@@ -213,7 +233,7 @@ def plot_pareto_panel(ax, series_data: dict[str, list[dict]], title: str) -> Non
                 color="#333333",
             )
 
-    ax.set_xlabel("Mean Interactivity (tok/s/user)")
+    ax.set_xlabel(f"{x_metric.capitalize()} Interactivity (tok/s/user)")
     ax.set_ylabel("Total Throughput per GPU (tok/s)")
     ax.set_title(title, fontsize=10)
     ax.grid(True, linestyle=":", alpha=0.4)
@@ -253,10 +273,15 @@ def plot_ttft_bar_panel(ax, series_data: dict[str, list[dict]], title: str) -> N
     ax.legend(loc="upper left", fontsize=8)
 
 
-def build_groups(records: list[dict]) -> dict[ConfigGroup, dict[str, list[dict]]]:
+def build_groups(
+    records: list[dict], exclude_conc: set[int] | None = None
+) -> dict[ConfigGroup, dict[str, list[dict]]]:
+    exclude_conc = exclude_conc or set()
     grouped: dict[ConfigGroup, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
     for record in records:
         if not is_valid_record(record):
+            continue
+        if int(record.get("conc", -1)) in exclude_conc:
             continue
         group = ConfigGroup.from_record(record)
         series = offloading_label(record)
@@ -272,6 +297,7 @@ def generate_figure(
     output: Path,
     *,
     dpi: int = 150,
+    x_metric: str = "mean",
 ) -> None:
     if not grouped:
         raise SystemExit(
@@ -286,7 +312,9 @@ def generate_figure(
     for row, group in enumerate(groups):
         series_data = grouped[group]
         suffix = group.title_suffix
-        plot_pareto_panel(axes[row, 0], series_data, f"Pareto Frontier - {suffix}")
+        plot_pareto_panel(
+            axes[row, 0], series_data, f"Pareto Frontier - {suffix}", x_metric=x_metric
+        )
         plot_ttft_bar_panel(axes[row, 1], series_data, f"TTFT - {suffix}")
 
     fig.tight_layout()
@@ -311,6 +339,21 @@ def main() -> int:
         help="Search recursively for *.json under results_dir",
     )
     parser.add_argument(
+        "--x-metric",
+        choices=("mean", "median"),
+        default="mean",
+        help=(
+            "Interactivity statistic for the Pareto x-axis. 'median' is more "
+            "robust to short/single-token outlier requests (default: mean)."
+        ),
+    )
+    parser.add_argument(
+        "--exclude-conc",
+        type=str,
+        default="",
+        help="Comma-separated concurrency levels to exclude (e.g. cancelled runs: '8,16,32')",
+    )
+    parser.add_argument(
         "--aiperf-artifacts",
         type=Path,
         default=None,
@@ -323,9 +366,12 @@ def main() -> int:
 
     records = load_records(args.results_dir, args.recursive)
     enrich_median_intvty_from_aiperf(records, args.aiperf_artifacts)
-    grouped = build_groups(records)
+    exclude_conc = {
+        int(c.strip()) for c in args.exclude_conc.split(",") if c.strip()
+    }
+    grouped = build_groups(records, exclude_conc=exclude_conc)
     output = args.output or (args.results_dir / "pareto_frontier.png")
-    generate_figure(grouped, output)
+    generate_figure(grouped, output, x_metric=args.x_metric)
 
     n_points = sum(len(v) for series in grouped.values() for v in series.values())
     print(f"Saved {output}")

@@ -29,7 +29,7 @@ export SLURM_PARTITION="${SLURM_PARTITION:-amd-aim}"
 export TIME_LIMIT="${TIME_LIMIT:-08:00:00}"
 # 1P2D needs 3 nodes. Leave SLURM_REUSE_JOBID unset to fresh-submit via sbatch;
 # only set it to reuse an existing allocation that has >= 3 nodes.
-export SLURM_REUSE_JOBID="${SLURM_REUSE_JOBID:-8271}"
+export SLURM_REUSE_JOBID="${SLURM_REUSE_JOBID:-8448}"
 
 # ── Model (key must match benchmarks/multi_node/amd_utils/models_vllm.yaml) ──
 export MODEL_PATH="${MODEL_PATH:-/it-share/hf_cache}"
@@ -97,7 +97,7 @@ export MAX_MODEL_LEN="${MAX_MODEL_LEN:-262144}"
 export DURATION="${DURATION:-1800}"
 # Default agentic sweep (mirrors the kimik2.5 agentic sibling's conc-list,
 # trimmed). Override CONC for the full fixed-seq-len sweep (8x16x32x64x...).
-CONC="${CONC:-32x64}"
+CONC="${CONC:-1x2x4x8x16}"
 
 export KEEP_CONTAINERS="${KEEP_CONTAINERS:-0}"
 export SPEC_DECODING="none"
